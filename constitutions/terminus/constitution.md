@@ -74,12 +74,32 @@ This domain constitution is strictly additive relative to the org constitution. 
 
 ---
 
+### Article 5: Direct-to-Main Development for Infrastructure and Platform Repos
+
+**Rule:** Implementation work in `terminus.infra` and `terminus.platform` target repositories may be committed directly to `main` without creating initiative, epic, or story feature branches, and without opening pull requests. The LENS `/dev` workflow's default branching and PR pattern (initiative branch → epic branch → story branch with story→epic→initiative PRs) is **overridden** for these two repositories. All implementation commits land on `main` directly.
+
+**Rationale:** `terminus.infra` and `terminus.platform` are single-operator homelab infrastructure repositories. The full feature-branch and PR review ceremony provides no practical safety benefit in this context — there is no second reviewer, no parallel development stream that risks merge conflict, and no deployment pipeline gated on PR approval. The overhead of maintaining initiative/epic/story branches and merging PR chains is disproportionate to the risk and actively impedes delivery cadence. Planning discipline (LENS lifecycle phases, sprint planning, story definitions) is retained; only the target-repo branching and PR mechanics are relaxed.
+
+**Scope:** This article applies exclusively to the following target repositories:
+- `terminus.infra` (`TargetProjects/terminus/infra/terminus.infra`)
+- `terminus.platform` (`TargetProjects/terminus/platform/terminus.platform`)
+
+All other terminus-domain repositories follow the default LENS branching and PR model unless a separate constitutional article grants a similar exception.
+
+**Evidence Required:** No evidence artifact required. The presence of this article in the effective constitution for an initiative whose target repo is `terminus.infra` or `terminus.platform` is sufficient authorization.
+
+**Gate:** informational
+**Status:** active
+
+---
+
 ## Ratification Record
 
 | Date | Action | Summary |
 |------|--------|---------|
 | 2026-03-21T16:00:00Z | Ratified | Initial terminus domain constitution with repository-boundary governance |
 | 2026-03-25T00:00:00Z | Amended | Article 4: establish `trantor.internal` as canonical internal DNS domain |
+| 2026-03-26T00:00:00Z | Amended | Article 5: permit direct-to-main development for terminus.infra and terminus.platform |
 
 ---
 
