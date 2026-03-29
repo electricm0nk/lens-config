@@ -7,3 +7,12 @@ repositories:
     remote_url: https://github.com/electricm0nk/terminus.platform.git
     local_path: TargetProjects/terminus/platform/terminus.platform
     default_branch: main
+  - name: fourdogs
+    remote_url: https://github.com/electricm0nk/fourdogs.git
+    local_path: TargetProjects/fourdogs/prototype/fourdogs
+    default_branch: main
+    language: unknown
+    bmad_configured: false
+    domain: fourdogs
+    service: prototype
+    discovered_at: "2026-03-29T15:18:34Z"
