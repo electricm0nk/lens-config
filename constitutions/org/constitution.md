@@ -208,11 +208,29 @@ This constitution governs all software initiatives under the electricm0nk organi
 
 ---
 
+### Article 14: Automated Phase PR Acceptance (Solo Operator)
+
+**Rule:** For solo-operator organizations, lens-work planning lifecycle phase branch PRs must be automatically created and merged without requiring manual review or intervention. The `auto-merge-phase.sh` script must be used in place of `create-pr.sh` for all phase completion steps.
+
+**Rationale:** Requiring manual PR review for planning artifact gate merges in a single-contributor environment introduces unnecessary ceremony with no review benefit. The artifact content is collaboratively produced with the agent during the phase workflow; the PR is a state-management record, not a human review gate. Blocking lifecycle advancement on a manual merge step in a solo context defeats the purpose of automation.
+
+**Scope:** Applies exclusively to lens-work planning lifecycle phase branches (`{initiative-root}-{audience}-{phase}` → `{initiative-root}-{audience}`). Does not apply to production code, infrastructure changes, or target project repositories.
+
+**Implementation:** `_bmad/lens-work/scripts/auto-merge-phase.sh`. Uses GitHub API + PAT when available; falls back to local `git merge --no-ff` + push.
+
+**Evidence Required:** `_bmad-output/lens-work/personal/profile.yaml` is present (confirms this is a managed workspace, not an ad-hoc environment).
+
+**Gate:** informational
+**Status:** active
+
+---
+
 ## Ratification Record
 
 | Date | Action | Summary |
 |------|--------|---------|
 | 2026-03-21T16:00:00Z | Ratified | Initial constitution — 8 articles |
+| 2026-04-02T00:00:00Z | Amended | Articles 9–13 added; Article 14 added — Automated Phase PR Acceptance (Solo Operator) |
 | 2026-03-21T16:00:00Z | Amended | Added Article 9: Security First |
 | 2026-03-27T00:00:00Z | Amended | Added Article 10: Repository Is the Agent's Source of Truth |
 | 2026-03-28T00:00:00Z | Amended | Added Article 11: Prefer Source-Correction; Always Maintain a Runbook |
