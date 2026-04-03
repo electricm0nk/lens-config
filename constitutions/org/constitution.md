@@ -225,6 +225,33 @@ This constitution governs all software initiatives under the electricm0nk organi
 
 ---
 
+### Article 15: AI Safety Primacy
+
+**Rule:** Safety and security are first-order requirements for all AI-related work. No speed, convenience, cost, feature velocity, or delivery timeline consideration may override a known or unmitigated safety or security risk. The default position when risk is unknown or unmitigated is: **do not proceed**. This default may only be overridden by an approved exception with complete exception artifacts committed to the project repository.
+
+**Exception Standard:** An exception to this article — where known or unmitigated risk is accepted — is valid only when all of the following artifacts are committed to the project repository before the work proceeds:
+
+1. **Decision statement:** explicit description of the risk being accepted and the reason the work must proceed despite it.
+2. **Threat and impact analysis:** documented assessment of the threat model, failure modes, and potential impact scope.
+3. **Mitigations:** concrete measures in place or planned before the excepted code or configuration ships.
+4. **Expiry date:** a specific date after which the exception must be re-evaluated or revoked.
+5. **Named approver:** the person who authorized the exception.
+6. **Rollback plan:** the approach to revert the change if the risk materializes.
+7. **Verification plan:** how and when the mitigations will be confirmed as effective.
+
+**Corollary — Incomplete Exceptions Are Void:** An exception lacking any of the seven required artifacts is automatically void and does not authorize the work to proceed. Partial exception artifacts provide no protection.
+
+**Promotion Gate:** Work may not be promoted to any audience tier while an unapproved or expired AI safety exception exists on the initiative. Exception artifacts must be current and complete before promotion unblocks.
+
+**Rationale:** AI systems introduce distinct risk profiles — including opaque failure modes, data leakage surfaces, adversarial input vulnerabilities, and unbounded compute behaviors — that make a default-safe posture essential. The cost of an AI safety failure is typically asymmetric: cheap to prevent early, expensive or irreversible once materialized. Treating safety as optional or deferrable, even under schedule pressure, converts technical risk into organizational risk.
+
+**Evidence Required:** Where an AI safety exception has been invoked, all seven exception artifacts must exist as committed files (or committed sections of existing architecture or decision files) in the active initiative branch. Architecture and design documents for AI components must include explicit safety and data-handling sections. Code review must confirm that no known unmitigated risks were introduced without an approved exception on record.
+
+**Gate:** informational
+**Status:** active
+
+---
+
 ## Ratification Record
 
 | Date | Action | Summary |
@@ -239,6 +266,7 @@ This constitution governs all software initiatives under the electricm0nk organi
 | 2026-03-28T02:00:00Z | Amended | Added Article 13: IDE Adapter Installation and Verification — requires `.claude/commands/` (and equivalent) be installed and verified by preflight on every run |
 | 2026-03-28T00:00:00Z | Amended | Added Article 14: Epic-Scoped PR Discipline — PRs created per epic, not per story; all stories committed to single epic branch; PR opened only when epic is complete |
 | 2026-03-28T00:00:00Z | Reverted | Removed Article 14: Epic-Scoped PR Discipline — superseded by terminus domain constitution Article 5 (2026-03-26), which already authorizes direct-to-main development for terminus.infra and terminus.platform; Article 14 was added in error and contradicted existing domain governance |
+| 2026-04-03T00:00:00Z | Amended | Added Article 15: AI Safety Primacy — safety/security is first principle for all AI work; default is do not proceed when risk is unknown or unmitigated; exceptions require seven committed artifacts; incomplete exceptions are void; promotion gated while any unapproved or expired exception exists |
 
 ---
 

@@ -108,6 +108,71 @@ All other terminus-domain repositories follow the default LENS branching and PR 
 
 ---
 
+### Article 7: Local-First AI Data Sovereignty
+
+**Rule:** All AI inference and processing within the terminus domain must operate on a local-first basis. Confidential, personal, or sensitive data must not leave the internal network (`trantor.internal`) for inference, embedding, or processing by any external AI service provider. Requests containing confidential data must be routed exclusively to locally hosted models. Routing logic that could leak confidential data to external providers must be identified and gated in architecture review. An exception to this rule requires a valid AI safety exception under org Article 15 with explicit data-flow justification.
+
+**Rationale:** Terminus is a homelab platform that may handle personal and operational data. The inference gateway's entire value proposition is local execution. Allowing confidential data to reach external providers would contradict the architectural intent, expose data outside operator control, and violate the data-sovereignty commitment to services that consume the gateway.
+
+**Evidence Required:** Architecture and implementation artifacts for AI components must include explicit data-flow statements identifying all processing paths and confirming confidential data is scoped to `trantor.internal` infrastructure. Infrastructure configuration must not permit external AI API calls on routes that handle confidential data without a committed and valid org Article 15 exception.
+
+**Gate:** informational
+**Status:** active
+
+---
+
+### Article 8: AI Component Promotion Gate
+
+**Rule:** Any change to an AI-facing interface, model configuration, routing policy, batch execution policy, or inference behavior requires a promotion gate confirmation before advancing to the next audience tier. This gate must verify: (a) all route profiles are present and compliant with service-layer requirements; (b) no regression in gateway contract tests; (c) all active AI safety exceptions under org Article 15 are approved and unexpired. Changes that affect only non-AI components follow the standard terminus promotion path.
+
+**Rationale:** AI behavioral changes can have subtle, non-obvious effects on downstream consumers. A dedicated promotion gate for AI-affecting changes ensures that contract stability, safety obligations, and exception hygiene are verified before reaching a wider audience — independent of the general release gate.
+
+**Evidence Required:** Promotion artifacts for AI-affecting changes must include confirmation that route profiles are complete, gateway contract tests pass, and no unapproved or expired AI safety exceptions are on record for the initiative.
+
+**Gate:** informational
+**Status:** active
+
+---
+
+### Article 9: AI Gateway Contract Stability
+
+**Rule:** The inference gateway within the terminus domain exposes one stable API contract to platform consumers. Provider-specific logic, model selection, retry strategies, timeout behavior, and fallback mechanics must be encapsulated in provider adapters behind the gateway interface. Platform consumers may not depend on provider-specific behaviors, response structures, or error formats. A breaking change to the gateway contract requires a formal contract version increment and a compatibility window documented in the initiative artifacts before deployment.
+
+**Rationale:** Contract instability at the inference gateway propagates breakage to all platform consumers simultaneously. A single stable contract with provider logic isolated in adapters allows models, providers, and routing strategies to evolve without impacting consumers. It also enables provider migration and cost substitution without consumer code changes.
+
+**Evidence Required:** Architecture artifacts for inference-adjacent platform features must reference the gateway contract as the integration boundary. No consumer code may import or reference provider-specific types, endpoints, or response shapes directly. When a breaking gateway contract change is introduced, initiative artifacts must document the version increment and compatibility window.
+
+**Gate:** informational
+**Status:** active
+
+---
+
+### Article 10: AI Telemetry and Audit Baseline
+
+**Rule:** All AI inference components within the terminus domain must emit structured telemetry for every request, including at minimum: route identifier, model used, request start time, duration, token counts (input and output where measurable), outcome (success, fallback, or error), and cost tag. Batch operations must additionally emit checkpoint events at each processing checkpoint. Telemetry must be retained locally and queryable. No inference request may silently fail or silently fall back without a logged outcome record.
+
+**Rationale:** Inference components are opaque execution environments. Without telemetry, capacity planning, cost attribution, failure diagnosis, and safety auditing are impossible. Silent failures and silent fallbacks are especially dangerous in AI contexts because they can produce plausible-looking incorrect output without any visible error signal.
+
+**Evidence Required:** Implementation artifacts for inference components must identify the telemetry emission points, the log destination, and the retention mechanism. Reviews must confirm that all route outcomes — including fallbacks and errors — produce logged records. Batch implementations must commit checkpoint telemetry to persistent storage in a form that allows resume-on-failure.
+
+**Gate:** informational
+**Status:** active
+
+---
+
+### Article 11: AI Infrastructure Separation
+
+**Rule:** Infrastructure services own the AI substrate: GPU passthrough configuration, model weights storage, hardware scheduling, runtime containers, and cluster-level resource policies. Inference services own AI behavior: route definitions, model selection policy, prompt templates, guardrails, fallback logic, and request lifecycle controls. Neither layer may absorb ownership responsibilities belonging to the other. Infra must expose substrate capabilities through documented contracts. Inference must consume substrate capabilities via those contracts without reaching into infra internals.
+
+**Rationale:** Mixing substrate ownership with behavioral ownership creates two failure modes: infra changes break inference behavior silently, and inference changes require infra modifications beyond their scope. Separation of substrate and behavior allows each layer to evolve, be replaced, or be upgraded independently. It also clarifies maintenance responsibility: if a GPU fails, that is an infra incident; if a route returns wrong results, that is an inference incident.
+
+**Evidence Required:** Architecture artifacts for AI initiatives must explicitly map each component to its owning layer (infra or inference) and must not place behavioral logic in infra-owned assets or substrate configuration in inference-owned assets. Infra-to-inference capability contracts must be documented in architecture files before implementation begins.
+
+**Gate:** informational
+**Status:** active
+
+---
+
 ## Ratification Record
 
 | Date | Action | Summary |
@@ -116,6 +181,7 @@ All other terminus-domain repositories follow the default LENS branching and PR 
 | 2026-03-25T00:00:00Z | Amended | Article 4: establish `trantor.internal` as canonical internal DNS domain |
 | 2026-03-26T00:00:00Z | Amended | Article 5: permit direct-to-main development for terminus.infra and terminus.platform |
 | 2026-03-27T00:00:00Z | Amended | Added Article 6: Base-to-Main Synchronization on Every Merge |
+| 2026-04-03T00:00:00Z | Amended | Added Articles 7–11: AI governance for the terminus domain — local-first data sovereignty, AI component promotion gate, gateway contract stability, telemetry/audit baseline, and AI infrastructure separation |
 
 ---
 
