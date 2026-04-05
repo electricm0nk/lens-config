@@ -301,6 +301,43 @@ This constitution governs all software initiatives under the electricm0nk organi
 
 ---
 
+### Article 19: Semaphore UI — Imperative Job Runner in the Terminus Platform
+
+**Rule:** Semaphore UI is the designated imperative job runner in the terminus ecosystem and must be used exclusively for work that cannot be expressed as a continuously reconcilable manifest. ArgoCD is exclusively responsible for all GitOps reconciliation — detecting desired-state manifests in Git and applying them to the cluster. These two tools are not interchangeable and must not be used in each other's roles.
+
+**The Reconciliation Test:** Before assigning ownership of any task, apply the following test: *Can ArgoCD reconcile this back to desired state if it drifts?* If yes — the task belongs in a manifest and ArgoCD owns it. If no — the task is inherently imperative and Semaphore owns it.
+
+**Semaphore's Canonical Responsibilities:**
+- Seeding secrets into Vault (before ESO/ArgoCD can take over)
+- Running database schema migrations (ordered, one-time, imperative)
+- Seeding initial or reference data into databases
+- External service configuration that cannot live in a manifest (webhooks, API keys, firewall rules, DNS entries)
+- Operational day-2 jobs (backups, restores, cleanup, smoke tests)
+
+**Standard Workload Deployment Sequence:**
+1. Semaphore — run schema migrations
+2. Semaphore — seed secrets into Vault
+3. Git — Helm chart present in `apps/<workload>/`
+4. ArgoCD — detects chart, deploys container
+5. ESO — pulls secret from Vault into k8s Secret
+6. Pod starts with schema and secrets available
+
+**What Semaphore Must NOT Do:**
+- Deploy containers directly to k3s (ArgoCD owns that)
+- Watch Git and react to commits (ArgoCD owns that)
+- Replace Crossplane for infrastructure provisioning (Crossplane owns that)
+
+**Blast-and-Repave Rule:** All Semaphore job definitions must live in the repository. All migration files must live under `apps/<workload>/migrations/`. Nothing Semaphore does may require tribal knowledge to reconstruct. A Semaphore-owned operation that cannot be reproduced from committed artifacts alone is a violation of this article.
+
+**Rationale:** Without an explicit boundary, Semaphore and ArgoCD responsibilities silently overlap — teams reach for whichever tool is familiar rather than applying the correct ownership model. Imperative steps executed outside GitOps become invisible to reconciliation, producing cluster state that diverges from declared intent without ArgoCD detecting it. Equally, attempting to force inherently imperative operations (secrets seeding, migrations) into declarative ArgoCD sync waves creates ordering fragility and hidden dependencies. The reconciliation test provides a deterministic decision rule that keeps the division of labor clean and auditable.
+
+**Evidence Required:** Architecture and implementation artifacts for any workload that uses Semaphore must enumerate each Semaphore-managed operation and confirm it passes the reconciliation test (i.e., ArgoCD cannot own it). All Semaphore job definitions must be committed to the repository. Where Semaphore and ArgoCD interact in a deployment sequence, the sequence must be explicitly documented in the workload's `runbook.md` (see Article 11).
+
+**Gate:** informational
+**Status:** active
+
+---
+
 ## Ratification Record
 
 | Date | Action | Summary |
@@ -319,6 +356,7 @@ This constitution governs all software initiatives under the electricm0nk organi
 | 2026-04-03T00:00:00Z | Amended | Added Article 15: AI Safety Primacy — safety/security is first principle for all AI work; default is do not proceed when risk is unknown or unmitigated; exceptions require seven committed artifacts; incomplete exceptions are void; promotion gated while any unapproved or expired exception exists |
 | 2026-04-03T00:00:00Z | Amended | Added Article 16: Internal Infrastructure Primacy — all initiatives default to internally built infrastructure; external service deviations must be documented as open .todo entries before proceeding |
 | 2026-04-03T00:00:00Z | Amended | Added Article 17: .todo Folder as Workflow Discovery Log — every initiative level requires a .todo/ folder for capturing defects, ideas, enhancements, and deferred decisions; reviewed at each phase gate; initiative cannot reach done with unreviewed entries |
+| 2026-04-04T00:00:00Z | Amended | Added Article 19: Semaphore UI — Imperative Job Runner in the Terminus Platform — establishes Semaphore as the exclusive imperative job runner, defines the reconciliation test for ArgoCD vs Semaphore ownership, enumerates Semaphore's canonical responsibilities and the standard workload deployment sequence, enforces blast-and-repave rule requiring all job definitions and migration files in the repository |
 
 ---
 
