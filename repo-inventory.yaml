@@ -1,27 +1,30 @@
 repositories:
-  - name: terminus.infra
-    remote_url: https://github.com/electricm0nk/terminus.infra.git
-    local_path: TargetProjects/terminus/infra/terminus.infra
-    default_branch: main
-  - name: terminus.platform
-    remote_url: https://github.com/electricm0nk/terminus.platform.git
-    local_path: TargetProjects/terminus/platform/terminus.platform
-    default_branch: main
-  - name: terminus-portal
-    remote_url: https://github.com/electricm0nk/terminus-portal.git
-    local_path: TargetProjects/terminus/portal/terminus-portal
-    default_branch: main
-    language: html
-    bmad_configured: false
-    domain: terminus
-    service: portal
-    discovered_at: "2026-04-10T21:03:00Z"
-  - name: fourdogs
-    remote_url: https://github.com/electricm0nk/fourdogs.git
-    local_path: TargetProjects/fourdogs/prototype/fourdogs
-    default_branch: main
-    language: unknown
-    bmad_configured: false
-    domain: fourdogs
-    service: prototype
-    discovered_at: "2026-03-29T15:18:34Z"
+- name: terminus.infra
+  remote_url: https://github.com/electricm0nk/terminus.infra.git
+  local_path: TargetProjects/terminus/infra/terminus.infra
+  default_branch: main
+- name: terminus.platform
+  remote_url: https://github.com/electricm0nk/terminus.platform.git
+  local_path: TargetProjects/terminus/platform/terminus.platform
+  default_branch: main
+- name: terminus-portal
+  remote_url: https://github.com/electricm0nk/terminus-portal.git
+  local_path: TargetProjects/terminus/portal/terminus-portal
+  default_branch: main
+  language: html
+  bmad_configured: false
+  domain: terminus
+  service: portal
+  discovered_at: '2026-04-10T21:03:00Z'
+- name: fourdogs
+  remote_url: https://github.com/electricm0nk/fourdogs.git
+  local_path: TargetProjects/fourdogs/prototype/fourdogs
+  default_branch: main
+  language: unknown
+  bmad_configured: false
+  domain: fourdogs
+  service: prototype
+  discovered_at: '2026-03-29T15:18:34Z'
+- name: lens-governance
+  remote_url: https://github.com/electricm0nk/lens.config.git
+  local_path: TargetProjects/lens/lens-governance
