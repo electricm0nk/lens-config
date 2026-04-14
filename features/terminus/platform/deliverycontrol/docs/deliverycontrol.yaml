@@ -1,0 +1,18 @@
+initiative: deliverycontrol
+scope: feature
+domain: terminus
+service: platform
+track: tech-change
+language: unknown
+created: "2026-04-11T00:00:00Z"
+initiative_root: terminus-platform-deliverycontrol
+docs:
+  path: docs/terminus/platform/deliverycontrol
+  domain: terminus
+  service: platform
+  repo: deliverycontrol
+  bmad_docs: docs/terminus/platform/deliverycontrol/stories
+target_repos:
+  - name: terminus.platform
+    local_path: TargetProjects/terminus/platform/terminus.platform
+    remote_url: https://github.com/electricm0nk/terminus.platform.git

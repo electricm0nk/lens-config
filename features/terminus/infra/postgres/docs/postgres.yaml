@@ -1,0 +1,44 @@
+# Initiative configuration — committed to git (Domain 1 artifact)
+id: terminus-infra-postgres
+name: postgres
+initiative: postgres
+scope: feature
+domain: terminus
+service: infra
+track: feature
+language: unknown
+question_mode: interactive
+created: 2026-03-21T00:00:00Z
+initiative_root: terminus-infra-postgres
+docs:
+  path: docs/terminus/infra/postgres
+  domain: terminus
+  service: infra
+  repo: postgres
+target_repos:
+  - name: terminus.infra
+    local_path: TargetProjects/terminus/infra/terminus.infra
+    remote: https://github.com/electricm0nk/terminus.infra.git
+    default_branch: main
+
+status: complete
+completed_at: "2026-03-26T04:00:00Z"
+phase_status:
+  dev: complete
+
+architecture_context:
+  target_repo: terminus.infra
+  toolchain:
+    provisioning: opentofu-1.11.0
+    configuration: ansible-core-2.19
+    secrets_authoring: sops+age
+    secrets_runtime: vault-kv-v2-1.21.4
+    state_backend: consul-1.22.5
+  dependencies:
+    - terminus-infra-proxmox: PostgreSQL VM(s) provisioned on Proxmox substrate
+    - terminus-infra-secrets: Vault manages database credentials at runtime
+  notes:
+    - PostgreSQL as a shared infra capability; owned centrally per infra constitution Article 3
+    - Vault path convention: secret/terminus/{env}/postgres/...
+    - Credential rotation and backup strategy to be defined in techplan
+    - Per-environment identity isolation applies (dev, prod)

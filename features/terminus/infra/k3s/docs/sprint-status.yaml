@@ -1,0 +1,83 @@
+# generated: 2026-03-28
+# project: terminus-infra-k3s
+# project_key: NOKEY
+# tracking_system: file-system
+# story_location: docs/terminus/infra/k3s/stories
+
+# STATUS DEFINITIONS:
+# ==================
+# Epic Status:
+#   - backlog: Epic not yet started
+#   - in-progress: Epic actively being worked on
+#   - done: All stories in epic completed
+#
+# Epic Status Transitions:
+#   - backlog → in-progress: Automatically when first story is created (via create-story)
+#   - in-progress → done: Manually when all stories reach 'done' status
+#
+# Story Status:
+#   - backlog: Story only exists in epic file
+#   - ready-for-dev: Story file created in stories folder
+#   - in-progress: Developer actively working on implementation
+#   - review: Ready for code review (via Dev's code-review workflow)
+#   - done: Story completed
+#
+# Retrospective Status:
+#   - optional: Can be completed but not required
+#   - done: Retrospective has been completed
+#
+# WORKFLOW NOTES:
+# ===============
+# - Epic transitions to 'in-progress' automatically when first story is created
+# - Stories can be worked in parallel if team capacity allows
+# - SM typically creates next story after previous one is 'done' to incorporate learnings
+# - Dev moves story to 'review', then runs code-review (fresh context, different LLM recommended)
+
+generated: 2026-03-28
+project: terminus-infra-k3s
+project_key: NOKEY
+tracking_system: file-system
+story_location: docs/terminus/infra/k3s/stories
+
+development_status:
+  # ── Epic 1: Cluster Bootstrap & Topology ───────────────────────────────────
+  epic-1: done
+  1-1-bootstrap-first-control-plane-node: done
+  1-2-join-second-and-third-control-plane-nodes: done
+  1-3-join-worker-nodes: done
+  1-4-apply-control-plane-noschedule-taints: done
+  epic-1-retrospective: optional
+
+  # ── Epic 2: Cluster Foundation (ArgoCD + Namespaces + RBAC) ────────────────
+  epic-2: done
+  2-1-create-namespace-scaffolding-with-standard-labels: done
+  2-2-create-rbac-baseline-clusterroles-and-serviceaccounts: done
+  2-3-bootstrap-argocd-via-ansible-helm-install: done
+  2-4-deploy-app-of-apps-root-application: done
+  epic-2-retrospective: optional
+
+  # ── Epic 3: Network & Ingress (MetalLB + Traefik) ──────────────────────────
+  epic-3: done
+  3-1-deploy-metallb-with-l2-ipaddresspool: done
+  3-2-configure-traefik-with-metallb-vip-and-active-ingressclass: done
+  epic-3-retrospective: optional
+
+  # ── Epic 4: TLS & Secrets Infrastructure (cert-manager + ESO) ─────────────
+  epic-4: done
+  4-1-prepare-eso-vault-bootstrap-secret-via-ansible: done
+  4-2-deploy-cert-manager-with-vault-pki-clusterissuer: done
+  4-3-deploy-eso-with-vault-secretstore: done
+  epic-4-retrospective: optional
+
+  # ── Epic 5: Consumer Contract Validation ───────────────────────────────────
+  epic-5: done
+  5-1-author-consumer-contract-validation-script: done
+  5-2-execute-contract-validation-and-obtain-operator-sign-off: done
+  epic-5-retrospective: optional
+
+  # ── Epic 6: Operational Lifecycle (Upgrade + Node Replace + Docs) ──────────
+  epic-6: done
+  6-1-implement-and-validate-cluster-upgrade-playbook-and-runbook: done
+  6-2-implement-and-validate-node-replacement-playbook-and-runbook: done
+  6-3-author-bootstrap-runbook: done
+  epic-6-retrospective: optional

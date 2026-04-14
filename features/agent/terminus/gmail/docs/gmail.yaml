@@ -1,0 +1,9 @@
+# Initiative configuration — committed to git (Domain 1 artifact)
+initiative: gmail
+scope: feature
+domain: agent
+service: terminus
+track: full
+language: unknown
+created: 2026-03-21T00:00:00Z
+initiative_root: agent-terminus-gmail

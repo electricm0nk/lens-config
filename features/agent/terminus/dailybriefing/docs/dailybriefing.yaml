@@ -1,0 +1,33 @@
+# Initiative configuration — committed to git (Domain 1 artifact)
+initiative: dailybriefing
+scope: feature
+domain: agent
+service: terminus
+track: full
+language: unknown
+created: 2026-03-21T00:00:00Z
+initiative_root: agent-terminus-dailybriefing
+
+docs:
+  path: docs/agent/terminus/dailybriefing
+  domain: agent
+  service: agent
+  repo: dailybriefing
+
+audience_status:
+  medium_to_large: complete
+
+current_phase: sprintplan
+
+phase_status:
+  sprintplan:
+    status: pr_pending
+    pr_url: https://github.com/electricm0nk/bmad.lens.projects/pull/32
+    pr_number: 32
+    gate: passed_with_warnings
+    verified_at: "2026-03-28T04:00:00Z"
+    reviewer: lens
+    warnings:
+      - "stories.md initially missing — generated during sprintplan execution"
+      - "readiness-checklist.md initially missing — generated during sprintplan execution"
+      - "Upstream workers (gmail/gcal/weather) not yet deployed — mitigated by degradation handling"

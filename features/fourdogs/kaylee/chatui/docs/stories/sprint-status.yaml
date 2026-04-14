@@ -1,0 +1,27 @@
+# generated: 2026-04-13
+# project: fourdogs-kaylee-chatui
+# project_key: NOKEY
+# tracking_system: file-system
+# story_location: docs/fourdogs/kaylee/chatui/stories
+
+generated: 2026-04-13
+project: fourdogs-kaylee-chatui
+project_key: NOKEY
+tracking_system: file-system
+story_location: docs/fourdogs/kaylee/chatui/stories
+
+development_status:
+  epic-1: in-progress
+  1-1-fastapi-staticfiles-mount-with-production-env-var-gate: ready-for-dev
+  1-2-deploy-chatui-to-kaylee-agent-dev-environment: ready-for-dev
+  epic-1-retrospective: optional
+
+  epic-2: backlog
+  2-1-session-creation-on-page-load-and-session-id-display: ready-for-dev
+  2-2-send-message-and-display-sync-response-in-chat-format: ready-for-dev
+  2-3-conversation-history-load-and-graceful-empty-state: ready-for-dev
+  epic-2-retrospective: optional
+
+  epic-3: backlog
+  3-1-eventsource-streaming-path-behind-kaylee-stream-enabled-flag: ready-for-dev
+  epic-3-retrospective: optional

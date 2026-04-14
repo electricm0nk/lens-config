@@ -1,0 +1,24 @@
+initiative: https-fqdn-fix
+scope: feature
+domain: terminus
+service: portal
+track: hotfix
+language: unknown
+created: "2026-04-11T00:00:00Z"
+initiative_root: terminus-portal-https-fqdn-fix
+docs:
+  path: docs/terminus/portal/https-fqdn-fix
+  domain: terminus
+  service: portal
+  repo: https-fqdn-fix
+  bmad_docs: docs/terminus/portal/https-fqdn-fix/stories
+target_repos:
+  - name: terminus-portal
+    local_path: TargetProjects/terminus/portal/terminus-portal
+    remote_url: https://github.com/electricm0nk/terminus-portal.git
+phase_status:
+  techplan:
+    status: complete
+    started_at: "2026-04-11T00:00:00Z"
+    completed_at: "2026-04-11T14:06:00Z"
+    artifact: docs/terminus/portal/https-fqdn-fix/architecture.md

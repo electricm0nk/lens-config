@@ -1,0 +1,8 @@
+initiative: agent
+scope: feature
+domain: fourdogs
+service: kaylee
+track: tech-change
+language: unknown
+created: '2026-04-12T00:00:00Z'
+initiative_root: fourdogs-kaylee-agent

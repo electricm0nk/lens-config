@@ -1,0 +1,26 @@
+initiative: fourdogs-central-centralauthorization
+sprint: 1
+track: tech-change
+status: in-progress
+startedAt: '2026-04-09'
+
+stories:
+  - id: "1.1"
+    title: "Add authorized_users migration"
+    status: ready-for-dev
+    file: dev-story-1-1-add-authorized-users-migration.md
+  - id: "1.2"
+    title: "Add sqlc queries for authorized_users"
+    status: ready-for-dev
+    depends_on: ["1.1"]
+    file: dev-story-1-2-sqlc-queries-authorized-users.md
+  - id: "1.3"
+    title: "Enforce authorization check in OAuth callback"
+    status: ready-for-dev
+    depends_on: ["1.2"]
+    file: dev-story-1-3-oauth-callback-authorization-check.md
+  - id: "1.4"
+    title: "Add users CLI subcommand"
+    status: ready-for-dev
+    depends_on: ["1.2"]
+    file: dev-story-1-4-users-cli-subcommand.md

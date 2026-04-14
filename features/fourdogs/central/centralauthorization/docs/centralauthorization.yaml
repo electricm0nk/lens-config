@@ -1,0 +1,12 @@
+initiative: centralauthorization
+scope: feature
+domain: fourdogs
+service: central
+track: tech-change
+language: go
+docs:
+  path: "docs/fourdogs/central/centralauthorization"
+  domain: fourdogs
+  service: central
+created: 2026-04-09T22:10:00Z
+initiative_root: fourdogs-central-centralauthorization

@@ -1,0 +1,35 @@
+name: Semaphoreui
+description: 'Migrated from legacy branch: terminus-infra-semaphoreui'
+featureId: semaphoreui
+domain: terminus
+service: infra
+phase: preplan
+track: full
+milestones:
+  businessplan: null
+  techplan: null
+  finalizeplan: null
+  dev-ready: null
+  dev-complete: null
+team:
+- username: Todd Hintzmann
+  role: lead
+dependencies:
+  depends_on: []
+  depended_by: []
+target_repos: []
+links:
+  retrospective: null
+  issues: []
+  pull_request: null
+priority: medium
+created: '2026-04-14T20:31:28Z'
+updated: '2026-04-14T20:31:28Z'
+phase_transitions:
+- phase: preplan
+  timestamp: '2026-04-14T20:31:28Z'
+  user: Todd Hintzmann
+docs:
+  path: docs/terminus/infra/semaphoreui
+  governance_docs_path: features/terminus/infra/semaphoreui/docs
+migrated_from: terminus-infra-semaphoreui

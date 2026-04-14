@@ -1,0 +1,35 @@
+name: Portal2
+description: 'Migrated from legacy branch: terminus-portal-portal2'
+featureId: portal2
+domain: terminus
+service: portal
+phase: preplan
+track: full
+milestones:
+  businessplan: null
+  techplan: null
+  finalizeplan: null
+  dev-ready: null
+  dev-complete: null
+team:
+- username: Todd Hintzmann
+  role: lead
+dependencies:
+  depends_on: []
+  depended_by: []
+target_repos: []
+links:
+  retrospective: null
+  issues: []
+  pull_request: null
+priority: medium
+created: '2026-04-14T20:31:30Z'
+updated: '2026-04-14T20:31:30Z'
+phase_transitions:
+- phase: preplan
+  timestamp: '2026-04-14T20:31:30Z'
+  user: Todd Hintzmann
+docs:
+  path: docs/terminus/portal/portal2
+  governance_docs_path: features/terminus/portal/portal2/docs
+migrated_from: terminus-portal-portal2

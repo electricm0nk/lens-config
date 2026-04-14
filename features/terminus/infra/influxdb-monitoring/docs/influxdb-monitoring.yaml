@@ -1,0 +1,49 @@
+# Initiative configuration — committed to git (Domain 1 artifact)
+id: terminus-infra-influxdb-monitoring
+name: influxdb-monitoring
+initiative: influxdb-monitoring
+scope: feature
+domain: terminus
+service: infra
+track: tech-change
+language: unknown
+question_mode: interactive
+created: 2026-04-12T00:00:00Z
+initiative_root: terminus-infra-influxdb-monitoring
+docs:
+  path: docs/terminus/infra/influxdb-monitoring
+  domain: terminus
+  service: infra
+  repo: monitoring
+current_phase: dev
+phase_status:
+  techplan:
+    status: complete
+    completedAt: 2026-04-12
+  devproposal:
+    status: complete
+    completedAt: 2026-04-12
+  sprintplan:
+    status: complete
+    completedAt: 2026-04-12
+  dev:
+    status: in-progress
+    startedAt: 2026-04-12
+    active_epic: epic-1
+    active_story: 1-4
+architecture_context:
+  target_repo: terminus.infra
+  toolchain:
+    gitops: argocd
+    package_manager: helm
+    config_management: ansible-core-2.19
+    provisioning: opentofu-1.11.0
+    secrets_runtime: vault-kv-v2-1.21.4
+  dependencies:
+    - terminus-infra-k3s: InfluxDB runs as k3s workloads in monitoring namespaces
+    - terminus-infra-secrets: bootstrap/admin credentials must come from Vault + ESO
+  notes:
+    - Deploy via ArgoCD Applications (prod and dev) from terminus.infra
+    - Use Helm chart source https://helm.influxdata.com/ and repo-managed values files
+    - No credentials stored in git; all bootstrap auth material is secret-managed
+    - Start with dev deployment verification before enabling prod usage

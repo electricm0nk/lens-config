@@ -1,0 +1,56 @@
+# Initiative configuration — committed to git (Domain 1 artifact)
+initiative: provider-routing
+scope: feature
+domain: terminus
+service: inference
+track: feature
+language: go
+question_mode: interactive
+created: 2026-04-06T00:00:00Z
+initiative_root: terminus-inference-provider-routing
+docs:
+  path: docs/terminus/inference/provider-routing
+  domain: terminus
+  service: inference
+  repo: provider-routing
+current_phase: complete
+phase_status:
+  devproposal:
+    status: complete
+    pr_url: https://github.com/electricm0nk/bmad.lens.projects/pull/96
+    pr_number: 96
+  sprintplan:
+    status: complete
+    pr_url: https://github.com/electricm0nk/bmad.lens.projects/pull/125
+    pr_number: 125
+audience_status:
+  small_to_medium: complete
+  medium_to_large: complete
+  large_to_base: complete
+final_pr_url: https://github.com/electricm0nk/bmad.lens.projects/pull/127
+final_pr_number: 127
+dev_status:
+  epic_1:
+    status: complete
+    notes: "Router interface, NoopRouter, routerImpl, BudgetState, LoadProfiles, testdata fixtures, config/router/budget tests"
+    completedAt: 2026-04-14
+  epic_2:
+    status: complete
+    notes: "ErrNoEligibleProvider (503), ErrInvalidWorkloadClass (400) added to internal/errors"
+    completedAt: 2026-04-14
+  epic_3:
+    status: complete
+    notes: "NewChatHandler accepts Router; X-Workload-Class; Resolve/RecordUsage; degraded response fields"
+    completedAt: 2026-04-14
+  epic_4:
+    status: complete
+    notes: "NewReadyzHandler accepts Router; routing section in /readyz; 503 on AllExhausted"
+    completedAt: 2026-04-14
+  epic_5:
+    status: complete
+    notes: "LoadProfiles at startup in main.go; deploy/k8s/routing-config.yaml sample; helm configmap + values"
+    completedAt: 2026-04-14
+  pr_url: https://github.com/electricm0nk/terminus-inference-gateway/pull/27
+  pr_number: 27
+  completedAt: 2026-04-14
+initiative_status: complete

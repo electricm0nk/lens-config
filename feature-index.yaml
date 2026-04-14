@@ -1,0 +1,529 @@
+features:
+- id: dailybriefing
+  featureId: dailybriefing
+  domain: agent
+  service: terminus
+  status: preplan
+  phase: preplan
+  owner: Todd
+  plan_branch: dailybriefing-plan
+  related_features:
+    depends_on: []
+    blocks: []
+    related: []
+  updated_at: '2026-04-14T20:31:04Z'
+  summary: 'Migrated from legacy branch: agent-terminus-dailybriefing'
+  stale: false
+  migrated_from: agent-terminus-dailybriefing
+- id: gcal
+  featureId: gcal
+  domain: agent
+  service: terminus
+  status: preplan
+  phase: preplan
+  owner: Todd Hintzmann
+  plan_branch: gcal-plan
+  related_features:
+    depends_on: []
+    blocks: []
+    related: []
+  updated_at: '2026-04-14T20:31:22Z'
+  summary: 'Migrated from legacy branch: agent-terminus-gcal'
+  stale: false
+  migrated_from: agent-terminus-gcal
+- id: gmail
+  featureId: gmail
+  domain: agent
+  service: terminus
+  status: preplan
+  phase: preplan
+  owner: Todd Hintzmann
+  plan_branch: gmail-plan
+  related_features:
+    depends_on: []
+    blocks: []
+    related: []
+  updated_at: '2026-04-14T20:31:22Z'
+  summary: 'Migrated from legacy branch: agent-terminus-gmail'
+  stale: false
+  migrated_from: agent-terminus-gmail
+- id: ui
+  featureId: ui
+  domain: agent
+  service: terminus
+  status: preplan
+  phase: preplan
+  owner: Todd Hintzmann
+  plan_branch: ui-plan
+  related_features:
+    depends_on: []
+    blocks: []
+    related: []
+  updated_at: '2026-04-14T20:31:23Z'
+  summary: 'Migrated from legacy branch: agent-terminus-ui'
+  stale: false
+  migrated_from: agent-terminus-ui
+- id: weather
+  featureId: weather
+  domain: agent
+  service: terminus
+  status: preplan
+  phase: preplan
+  owner: Todd Hintzmann
+  plan_branch: weather-plan
+  related_features:
+    depends_on: []
+    blocks: []
+    related: []
+  updated_at: '2026-04-14T20:31:23Z'
+  summary: 'Migrated from legacy branch: agent-terminus-weather'
+  stale: false
+  migrated_from: agent-terminus-weather
+- id: centralauthorization
+  featureId: centralauthorization
+  domain: fourdogs
+  service: central
+  status: preplan
+  phase: preplan
+  owner: Todd Hintzmann
+  plan_branch: centralauthorization-plan
+  related_features:
+    depends_on: []
+    blocks: []
+    related: []
+  updated_at: '2026-04-14T20:31:23Z'
+  summary: 'Migrated from legacy branch: fourdogs-central-centralauthorization'
+  stale: false
+  migrated_from: fourdogs-central-centralauthorization
+- id: centralui50
+  featureId: centralui50
+  domain: fourdogs
+  service: central
+  status: preplan
+  phase: preplan
+  owner: Todd Hintzmann
+  plan_branch: centralui50-plan
+  related_features:
+    depends_on: []
+    blocks: []
+    related: []
+  updated_at: '2026-04-14T20:31:23Z'
+  summary: 'Migrated from legacy branch: fourdogs-central-centralui50'
+  stale: false
+  migrated_from: fourdogs-central-centralui50
+- id: emailfetcher
+  featureId: emailfetcher
+  domain: fourdogs
+  service: central
+  status: preplan
+  phase: preplan
+  owner: Todd Hintzmann
+  plan_branch: emailfetcher-plan
+  related_features:
+    depends_on: []
+    blocks: []
+    related: []
+  updated_at: '2026-04-14T20:31:23Z'
+  summary: 'Migrated from legacy branch: fourdogs-central-emailfetcher'
+  stale: false
+  migrated_from: fourdogs-central-emailfetcher
+- id: foundation
+  featureId: foundation
+  domain: fourdogs
+  service: central
+  status: preplan
+  phase: preplan
+  owner: Todd Hintzmann
+  plan_branch: foundation-plan
+  related_features:
+    depends_on: []
+    blocks: []
+    related: []
+  updated_at: '2026-04-14T20:31:24Z'
+  summary: 'Migrated from legacy branch: fourdogs-central-foundation'
+  stale: false
+  migrated_from: fourdogs-central-foundation
+- id: oauthredesign
+  featureId: oauthredesign
+  domain: fourdogs
+  service: central
+  status: preplan
+  phase: preplan
+  owner: Todd Hintzmann
+  plan_branch: oauthredesign-plan
+  related_features:
+    depends_on: []
+    blocks: []
+    related: []
+  updated_at: '2026-04-14T20:31:24Z'
+  summary: 'Migrated from legacy branch: fourdogs-central-oauthredesign'
+  stale: false
+  migrated_from: fourdogs-central-oauthredesign
+- id: uifix
+  featureId: uifix
+  domain: fourdogs
+  service: central
+  status: preplan
+  phase: preplan
+  owner: Todd Hintzmann
+  plan_branch: uifix-plan
+  related_features:
+    depends_on: []
+    blocks: []
+    related: []
+  updated_at: '2026-04-14T20:31:24Z'
+  summary: 'Migrated from legacy branch: fourdogs-central-uifix'
+  stale: false
+  migrated_from: fourdogs-central-uifix
+- id: velocitysignalwiring
+  featureId: velocitysignalwiring
+  domain: fourdogs
+  service: central
+  status: preplan
+  phase: preplan
+  owner: Todd Hintzmann
+  plan_branch: velocitysignalwiring-plan
+  related_features:
+    depends_on: []
+    blocks: []
+    related: []
+  updated_at: '2026-04-14T20:31:24Z'
+  summary: 'Migrated from legacy branch: fourdogs-central-velocitysignalwiring'
+  stale: false
+  migrated_from: fourdogs-central-velocitysignalwiring
+- id: agent
+  featureId: agent
+  domain: fourdogs
+  service: kaylee
+  status: preplan
+  phase: preplan
+  owner: Todd Hintzmann
+  plan_branch: agent-plan
+  related_features:
+    depends_on: []
+    blocks: []
+    related: []
+  updated_at: '2026-04-14T20:31:24Z'
+  summary: 'Migrated from legacy branch: fourdogs-kaylee-agent'
+  stale: false
+  migrated_from: fourdogs-kaylee-agent
+- id: chatui
+  featureId: chatui
+  domain: fourdogs
+  service: kaylee
+  status: preplan
+  phase: preplan
+  owner: Todd Hintzmann
+  plan_branch: chatui-plan
+  related_features:
+    depends_on: []
+    blocks: []
+    related: []
+  updated_at: '2026-04-14T20:31:25Z'
+  summary: 'Migrated from legacy branch: fourdogs-kaylee-chatui'
+  stale: false
+  migrated_from: fourdogs-kaylee-chatui
+- id: loader
+  featureId: loader
+  domain: fourdogs
+  service: prototype
+  status: preplan
+  phase: preplan
+  owner: Todd Hintzmann
+  plan_branch: loader-plan
+  related_features:
+    depends_on: []
+    blocks: []
+    related: []
+  updated_at: '2026-04-14T20:31:25Z'
+  summary: 'Migrated from legacy branch: fourdogs-prototype-loader'
+  stale: false
+  migrated_from: fourdogs-prototype-loader
+- id: sepordering
+  featureId: sepordering
+  domain: fourdogs
+  service: prototype
+  status: preplan
+  phase: preplan
+  owner: Todd Hintzmann
+  plan_branch: sepordering-plan
+  related_features:
+    depends_on: []
+    blocks: []
+    related: []
+  updated_at: '2026-04-14T20:31:25Z'
+  summary: 'Migrated from legacy branch: fourdogs-prototype-sepordering'
+  stale: false
+  migrated_from: fourdogs-prototype-sepordering
+- id: gateway
+  featureId: gateway
+  domain: terminus
+  service: inference
+  status: preplan
+  phase: preplan
+  owner: Todd Hintzmann
+  plan_branch: gateway-plan
+  related_features:
+    depends_on: []
+    blocks: []
+    related: []
+  updated_at: '2026-04-14T20:31:25Z'
+  summary: 'Migrated from legacy branch: terminus-inference-gateway'
+  stale: false
+  migrated_from: terminus-inference-gateway
+- id: openaiadapter
+  featureId: openaiadapter
+  domain: terminus
+  service: inference
+  status: preplan
+  phase: preplan
+  owner: Todd Hintzmann
+  plan_branch: openaiadapter-plan
+  related_features:
+    depends_on: []
+    blocks: []
+    related: []
+  updated_at: '2026-04-14T20:31:25Z'
+  summary: 'Migrated from legacy branch: terminus-inference-openaiadapter'
+  stale: false
+  migrated_from: terminus-inference-openaiadapter
+- id: provider-routing
+  featureId: provider-routing
+  domain: terminus
+  service: inference
+  status: preplan
+  phase: preplan
+  owner: Todd Hintzmann
+  plan_branch: provider-routing-plan
+  related_features:
+    depends_on: []
+    blocks: []
+    related: []
+  updated_at: '2026-04-14T20:31:26Z'
+  summary: 'Migrated from legacy branch: terminus-inference-provider-routing'
+  stale: false
+  migrated_from: terminus-inference-provider-routing
+- id: crossplane
+  featureId: crossplane
+  domain: terminus
+  service: infra
+  status: preplan
+  phase: preplan
+  owner: Todd Hintzmann
+  plan_branch: crossplane-plan
+  related_features:
+    depends_on: []
+    blocks: []
+    related: []
+  updated_at: '2026-04-14T20:31:26Z'
+  summary: 'Migrated from legacy branch: terminus-infra-crossplane'
+  stale: false
+  migrated_from: terminus-infra-crossplane
+- id: influxdb-monitoring
+  featureId: influxdb-monitoring
+  domain: terminus
+  service: infra
+  status: preplan
+  phase: preplan
+  owner: Todd Hintzmann
+  plan_branch: influxdb-monitoring-plan
+  related_features:
+    depends_on: []
+    blocks: []
+    related: []
+  updated_at: '2026-04-14T20:31:26Z'
+  summary: 'Migrated from legacy branch: terminus-infra-influxdb-monitoring'
+  stale: false
+  migrated_from: terminus-infra-influxdb-monitoring
+- id: k3s
+  featureId: k3s
+  domain: terminus
+  service: infra
+  status: preplan
+  phase: preplan
+  owner: Todd Hintzmann
+  plan_branch: k3s-plan
+  related_features:
+    depends_on: []
+    blocks: []
+    related: []
+  updated_at: '2026-04-14T20:31:27Z'
+  summary: 'Migrated from legacy branch: terminus-infra-k3s'
+  stale: false
+  migrated_from: terminus-infra-k3s
+- id: openclaw
+  featureId: openclaw
+  domain: terminus
+  service: infra
+  status: preplan
+  phase: preplan
+  owner: Todd Hintzmann
+  plan_branch: openclaw-plan
+  related_features:
+    depends_on: []
+    blocks: []
+    related: []
+  updated_at: '2026-04-14T20:31:27Z'
+  summary: 'Migrated from legacy branch: terminus-infra-openclaw'
+  stale: false
+  migrated_from: terminus-infra-openclaw
+- id: postgres
+  featureId: postgres
+  domain: terminus
+  service: infra
+  status: preplan
+  phase: preplan
+  owner: Todd Hintzmann
+  plan_branch: postgres-plan
+  related_features:
+    depends_on: []
+    blocks: []
+    related: []
+  updated_at: '2026-04-14T20:31:27Z'
+  summary: 'Migrated from legacy branch: terminus-infra-postgres'
+  stale: false
+  migrated_from: terminus-infra-postgres
+- id: proxmox
+  featureId: proxmox
+  domain: terminus
+  service: infra
+  status: preplan
+  phase: preplan
+  owner: Todd Hintzmann
+  plan_branch: proxmox-plan
+  related_features:
+    depends_on: []
+    blocks: []
+    related: []
+  updated_at: '2026-04-14T20:31:27Z'
+  summary: 'Migrated from legacy branch: terminus-infra-proxmox'
+  stale: false
+  migrated_from: terminus-infra-proxmox
+- id: secrets
+  featureId: secrets
+  domain: terminus
+  service: infra
+  status: preplan
+  phase: preplan
+  owner: Todd Hintzmann
+  plan_branch: secrets-plan
+  related_features:
+    depends_on: []
+    blocks: []
+    related: []
+  updated_at: '2026-04-14T20:31:28Z'
+  summary: 'Migrated from legacy branch: terminus-infra-secrets'
+  stale: false
+  migrated_from: terminus-infra-secrets
+- id: semaphoreui
+  featureId: semaphoreui
+  domain: terminus
+  service: infra
+  status: preplan
+  phase: preplan
+  owner: Todd Hintzmann
+  plan_branch: semaphoreui-plan
+  related_features:
+    depends_on: []
+    blocks: []
+    related: []
+  updated_at: '2026-04-14T20:31:28Z'
+  summary: 'Migrated from legacy branch: terminus-infra-semaphoreui'
+  stale: false
+  migrated_from: terminus-infra-semaphoreui
+- id: deliverycontrol
+  featureId: deliverycontrol
+  domain: terminus
+  service: platform
+  status: preplan
+  phase: preplan
+  owner: Todd Hintzmann
+  plan_branch: deliverycontrol-plan
+  related_features:
+    depends_on: []
+    blocks: []
+    related: []
+  updated_at: '2026-04-14T20:31:28Z'
+  summary: 'Migrated from legacy branch: terminus-platform-deliverycontrol'
+  stale: false
+  migrated_from: terminus-platform-deliverycontrol
+- id: grafana
+  featureId: grafana
+  domain: terminus
+  service: platform
+  status: preplan
+  phase: preplan
+  owner: Todd Hintzmann
+  plan_branch: grafana-plan
+  related_features:
+    depends_on: []
+    blocks: []
+    related: []
+  updated_at: '2026-04-14T20:31:29Z'
+  summary: 'Migrated from legacy branch: terminus-platform-grafana'
+  stale: false
+  migrated_from: terminus-platform-grafana
+- id: releaseorchestrator
+  featureId: releaseorchestrator
+  domain: terminus
+  service: platform
+  status: preplan
+  phase: preplan
+  owner: Todd Hintzmann
+  plan_branch: releaseorchestrator-plan
+  related_features:
+    depends_on: []
+    blocks: []
+    related: []
+  updated_at: '2026-04-14T20:31:29Z'
+  summary: 'Migrated from legacy branch: terminus-platform-releaseorchestrator'
+  stale: false
+  migrated_from: terminus-platform-releaseorchestrator
+- id: temporal
+  featureId: temporal
+  domain: terminus
+  service: platform
+  status: preplan
+  phase: preplan
+  owner: Todd Hintzmann
+  plan_branch: temporal-plan
+  related_features:
+    depends_on: []
+    blocks: []
+    related: []
+  updated_at: '2026-04-14T20:31:29Z'
+  summary: 'Migrated from legacy branch: terminus-platform-temporal'
+  stale: false
+  migrated_from: terminus-platform-temporal
+- id: https-fqdn-fix
+  featureId: https-fqdn-fix
+  domain: terminus
+  service: portal
+  status: preplan
+  phase: preplan
+  owner: Todd Hintzmann
+  plan_branch: https-fqdn-fix-plan
+  related_features:
+    depends_on: []
+    blocks: []
+    related: []
+  updated_at: '2026-04-14T20:31:29Z'
+  summary: 'Migrated from legacy branch: terminus-portal-https-fqdn-fix'
+  stale: false
+  migrated_from: terminus-portal-https-fqdn-fix
+- id: portal2
+  featureId: portal2
+  domain: terminus
+  service: portal
+  status: preplan
+  phase: preplan
+  owner: Todd Hintzmann
+  plan_branch: portal2-plan
+  related_features:
+    depends_on: []
+    blocks: []
+    related: []
+  updated_at: '2026-04-14T20:31:30Z'
+  summary: 'Migrated from legacy branch: terminus-portal-portal2'
+  stale: false
+  migrated_from: terminus-portal-portal2

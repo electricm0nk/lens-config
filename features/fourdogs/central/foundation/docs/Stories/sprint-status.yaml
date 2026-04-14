@@ -1,0 +1,68 @@
+# generated: 2026-04-05
+# project: fourdogs-central
+# project_key: NOKEY
+# tracking_system: file-system
+# story_location: docs/implementation-artifacts/fourdogs-central
+
+generated: "2026-04-05"
+project: fourdogs-central
+project_key: NOKEY
+tracking_system: file-system
+story_location: docs/implementation-artifacts/fourdogs-central
+
+# STATUS DEFINITIONS:
+# Epic Status: backlog → in-progress → done
+# Story Status: backlog → ready-for-dev → in-progress → review → done
+# Retrospective Status: optional ↔ done
+
+development_status:
+  # ─────────────────────────────────────────────────────────
+  # Epic 1: Platform Scaffold & Deployment Foundation
+  # ─────────────────────────────────────────────────────────
+  epic-1: done
+  1-1-initialize-monorepo-scaffold: done
+  1-2-database-schema-migrations: done
+  1-3-sqlc-configuration-and-codegen-ci-gate: done
+  1-4-github-actions-ci-pipeline: done
+  1-5-helm-chart-and-argocd-deployment-to-k3s: done
+  epic-1-retrospective: optional
+  epic-1-pr: "https://github.com/electricm0nk/fourdogs-central/pull/6"
+
+  # ─────────────────────────────────────────────────────────
+  # Epic 2: Data Ingestion Pipeline
+  # ─────────────────────────────────────────────────────────
+  epic-2: done
+  2-1-etailpet-product-csv-ingestion-parse-and-validate: done
+  2-2-velocity-and-ordering-signal-computation: done
+  2-3-catalog-upsert-all-or-nothing-transaction: done
+  2-4-item-classification-flags-and-operator-signals: done
+  epic-2-retrospective: optional
+  epic-2-pr: "https://github.com/electricm0nk/fourdogs-central/pull/11"
+
+  # ─────────────────────────────────────────────────────────
+  # Epic 3: Authenticated Catalog API
+  # ─────────────────────────────────────────────────────────
+  epic-3: done
+  3-1-health-check-endpoint-and-chi-router-wiring: done
+  3-2-google-oauth-redirect-and-callback: done
+  3-3-auth-middleware-and-session-persistence: done
+  3-4-catalog-api-endpoint-get-v1-items: done
+  epic-3-retrospective: optional
+  epic-3-pr: "https://github.com/electricm0nk/fourdogs-central/pull/16"
+
+  # ─────────────────────────────────────────────────────────
+  # Epic 4: Prototype Rewire & Go-Live
+  # ─────────────────────────────────────────────────────────
+  epic-4: done
+  4-1-cors-configuration-for-loader-html-origin: done
+  4-2-rewire-loader-html-to-authenticated-api: done
+  4-3-end-to-end-smoke-test-betsy-ordering-session: accepted-incomplete  # OAuth flow requires design changes before live test is viable
+  epic-4-retrospective: optional
+  epic-4-pr: "https://github.com/electricm0nk/fourdogs-central/pull/19"
+
+  # ── Dev Phase Completion ─────────────────────────────────
+  dev_completed_date: "2026-04-06"
+  dev_notes: >
+    Story 4-3 smoke test deferred — accepted-incomplete. OAuth redirect flow does not work
+    as implemented and requires design changes (see docs/fourdogs/.todo/2026-04-06-oauth-redirect-redesign.md).
+    Ordering session will be run after the OAuth redesign is complete.

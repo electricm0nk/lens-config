@@ -1,0 +1,35 @@
+name: Releaseorchestrator
+description: 'Migrated from legacy branch: terminus-platform-releaseorchestrator'
+featureId: releaseorchestrator
+domain: terminus
+service: platform
+phase: preplan
+track: full
+milestones:
+  businessplan: null
+  techplan: null
+  finalizeplan: null
+  dev-ready: null
+  dev-complete: null
+team:
+- username: Todd Hintzmann
+  role: lead
+dependencies:
+  depends_on: []
+  depended_by: []
+target_repos: []
+links:
+  retrospective: null
+  issues: []
+  pull_request: null
+priority: medium
+created: '2026-04-14T20:31:29Z'
+updated: '2026-04-14T20:31:29Z'
+phase_transitions:
+- phase: preplan
+  timestamp: '2026-04-14T20:31:29Z'
+  user: Todd Hintzmann
+docs:
+  path: docs/terminus/platform/releaseorchestrator
+  governance_docs_path: features/terminus/platform/releaseorchestrator/docs
+migrated_from: terminus-platform-releaseorchestrator

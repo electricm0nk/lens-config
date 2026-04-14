@@ -1,0 +1,33 @@
+initiative: ui
+scope: feature
+domain: fourdogs
+service: central
+track: full
+language: typescript
+created: '2026-04-10T00:00:00Z'
+initiative_root: fourdogs-central-ui
+id: fourdogs-central-ui
+docs:
+  path: docs/fourdogs/central/Stories
+  domain: fourdogs
+  service: central
+target_repos:
+  - name: fourdogs-central-ui
+    local_path: TargetProjects/fourdogs/central/fourdogs-central-ui
+    remote_url: https://github.com/electricm0nk/fourdogs-central-ui.git
+    default_branch: develop
+  - name: fourdogs-central
+    local_path: TargetProjects/fourdogs/central/fourdogs-central
+    remote_url: https://github.com/electricm0nk/fourdogs-central.git
+    default_branch: develop
+audience_status:
+  small_to_medium: complete
+  medium_to_large: complete
+  large_to_base: complete
+  base_to_main: pending
+phase_status:
+  sprintplan:
+    status: complete
+dev:
+  status: in_progress
+  started_date: "2026-04-12"

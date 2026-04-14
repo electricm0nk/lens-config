@@ -1,0 +1,71 @@
+# generated: 2026-04-14
+# project: fourdogs-central-velocitysignalwiring
+# project_key: NOKEY
+# tracking_system: file-system
+# story_location: docs/fourdogs/central/velocitysignalwiring/stories
+
+# STATUS DEFINITIONS:
+# ==================
+# Epic Status:
+#   - backlog: Epic not yet started
+#   - in-progress: Epic actively being worked on
+#   - done: All stories in epic completed
+#
+# Story Status:
+#   - backlog: Story only exists in epic file
+#   - ready-for-dev: Story file created in stories folder
+#   - in-progress: Developer actively working on implementation
+#   - review: Ready for code review (via Dev's code-review workflow)
+#   - done: Story completed
+#
+# Retrospective Status:
+#   - optional: Can be completed but not required
+#   - done: Retrospective has been completed
+#
+# WORKFLOW NOTES:
+# ===============
+# - Epic transitions to 'in-progress' automatically when first story is created
+# - Stories should be worked sequentially within Epic 1 (1.1 → 1.2 → 1.3) due to DB dependency
+# - Epic 2 depends on Epic 1 Story 1.1 (sqlc regen) — start after 1.1 is done
+# - Epic 3 is independent of Epic 2 — can be worked in parallel after Epic 1 Story 1.3 is done
+# - Dev moves story to 'review', then runs code-review
+
+generated: 2026-04-14
+project: fourdogs-central-velocitysignalwiring
+project_key: NOKEY
+tracking_system: file-system
+story_location: docs/fourdogs/central/velocitysignalwiring/stories
+
+development_status:
+  # ─────────────────────────────────────────────────────────
+  # Epic 1: DB Foundation + Classifier API
+  # Outcome: vc column in production, classifier operational,
+  #          on-demand endpoint hardened, daily scheduler fires
+  # Repos: fourdogs-central (Go)
+  # ─────────────────────────────────────────────────────────
+  epic-1: in-progress
+  1-1-apply-migration-and-verify-vc-column: ready-for-dev
+  1-2-harden-classifier-logic-and-tests: backlog
+  1-3-wire-route-auth-and-daily-scheduler: backlog
+  epic-1-retrospective: optional
+
+  # ─────────────────────────────────────────────────────────
+  # Epic 2: Frontend Signal Wiring
+  # Outcome: HOT badge fires from real velocity data
+  # Repos: fourdogs-central-ui (TypeScript/React)
+  # Dependency: Epic 1 Story 1.1 must be done (sqlc regen)
+  # ─────────────────────────────────────────────────────────
+  epic-2: backlog
+  2-1-map-vc-field-to-velocity-tier-in-use-vendor-catalog: backlog
+  epic-2-retrospective: optional
+
+  # ─────────────────────────────────────────────────────────
+  # Epic 3: emailfetcher Integration + EtailPet Stub
+  # Outcome: Sales import auto-triggers reclassification
+  # Repos: emailfetcher (Go)
+  # Dependency: Epic 1 Story 1.3 must be done (HTTP endpoint live)
+  # ─────────────────────────────────────────────────────────
+  epic-3: backlog
+  3-1-emailfetcher-post-import-velocity-trigger: backlog
+  3-2-etailpet-daily-report-request-stub: backlog
+  epic-3-retrospective: optional

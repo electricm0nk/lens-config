@@ -1,0 +1,52 @@
+phase: dev
+status: complete
+sprint: 1
+updated: "2026-03-26"
+
+epics:
+  epic-1: done
+  epic-2: done
+  epic-3: done
+  epic-4: done
+  epic-5: done
+
+stories:
+  # Epic 1: Infrastructure Provisioning
+  1-1-provision-postgresql-cluster-vms-via-opentofu: done
+  1-2-provision-postgresql-backup-vm-via-opentofu: done
+  1-3-sops-encrypted-local-state-committed-to-git: done
+  1-4-commit-infrastructure-adrs: done
+
+  # Epic 2: Cluster Bootstrap & High Availability
+  2-1-install-postgresql-17-patroni-via-opentofu-remote-exec: done
+  2-2-bootstrap-patroni-cluster-with-consul-dcs: done
+  2-3-enforce-tls-only-connections: done
+  2-4-configure-pgaudit-structured-json-logging: done
+  2-5-verify-automatic-ha-failover-via-deliberate-switchover: done
+  2-6-verify-pgadmin4-workstation-connection-over-tls: done
+
+  # Epic 3: Backup Infrastructure
+  3-1-install-and-configure-pgbackrest-on-all-nodes: done
+  3-2-initialize-pgbackrest-stanza: done
+  3-3-configure-async-wal-archiving: done
+  3-4-configure-automated-backup-schedule: done
+  3-5-on-demand-backup-and-test-restore-to-isolated-path: done
+
+  # Epic 4: Database Provisioning & Acceptance Testing
+  4-1-implement-postgres-databases-opentofu-module: done
+  4-2-provision-acceptance-test-db-and-verify-vault-credentials: done
+  4-3-verify-role-isolation-fr6-fr19: done
+  4-4-credential-revocation-and-reissue-fr9: done
+  4-5-run-acceptance-tests-1-3-cluster-health-db-lifecycle-role-isolation: done
+  4-6-run-acceptance-tests-5-6-audit-log-backup-restore-verification: done
+
+  # Epic 5: Operational Runbooks
+  5-1-runbook-initial-cluster-provisioning: done
+  5-2-runbook-blast-and-repave-fr22: done
+  5-3-runbook-manual-backup-and-restore: done
+  5-4-runbook-new-database-provisioning: done
+  5-5-runbook-credential-rotation: done
+  5-6-runbook-ha-failover-and-recovery: done
+  5-7-runbook-minor-version-upgrade-fr23: done
+  5-8-runbook-break-glass-access: done
+  5-9-sod-deviation-doc: done

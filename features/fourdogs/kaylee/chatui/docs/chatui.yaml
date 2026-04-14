@@ -1,0 +1,59 @@
+initiative: chatui
+scope: feature
+domain: fourdogs
+service: kaylee
+track: tech-change
+language: python
+created: '2026-04-13T00:00:00Z'
+initiative_root: fourdogs-kaylee-chatui
+docs:
+  path: docs/fourdogs/kaylee/chatui
+  domain: fourdogs
+  service: kaylee
+  repo: chatui
+  bmad_docs: docs/fourdogs/kaylee/chatui/stories
+target_repos:
+  - name: fourdogs-kaylee-agent
+    local_path: TargetProjects/fourdogs/kaylee
+    remote: https://github.com/electricm0nk/fourdogs-kaylee-agent
+    default_branch: main
+audience_status:
+  large_to_base: complete
+  base_to_main: complete
+initiative_complete: true
+completed_at: '2026-04-14T00:00:00Z'
+close_pr: https://github.com/electricm0nk/bmad.lens.projects/pull/173
+release_status:
+  dev: complete
+  prod: complete
+  temporal_workflow_ids:
+    dev: release-fourdogs-kaylee-agent-dev-f8726a45
+    prod: release-fourdogs-kaylee-agent-prod-f8726a45
+phase_status:
+  techplan: complete
+  devproposal: complete
+  sprintplan: complete
+  dev: complete
+dev_status:
+  epic_1:
+    stories_complete: [1-1, 1-2]
+    epic_pr: https://github.com/electricm0nk/fourdogs-kaylee-agent/pull/27
+    story_prs:
+      1-1: https://github.com/electricm0nk/fourdogs-kaylee-agent/pull/25
+      1-2: https://github.com/electricm0nk/fourdogs-kaylee-agent/pull/26
+  epic_2:
+    stories_complete: [2-1, 2-2, 2-3]
+    epic_pr: https://github.com/electricm0nk/fourdogs-kaylee-agent/pull/31
+    story_prs:
+      2-1: https://github.com/electricm0nk/fourdogs-kaylee-agent/pull/28
+      2-2: https://github.com/electricm0nk/fourdogs-kaylee-agent/pull/29
+      2-3: https://github.com/electricm0nk/fourdogs-kaylee-agent/pull/30
+  epic_3:
+    stories_complete: [3-1]
+    epic_pr: https://github.com/electricm0nk/fourdogs-kaylee-agent/pull/33
+    story_prs:
+      3-1: https://github.com/electricm0nk/fourdogs-kaylee-agent/pull/32
+  terminus_infra_required:
+    description: "Story 1.2 companion: set devUI.enabled=true in terminus.infra values-dev.yaml"
+    path: platforms/k3s/helm/fourdogs-kaylee-agent/values-dev.yaml
+    change: "devUI:\\n  enabled: true"

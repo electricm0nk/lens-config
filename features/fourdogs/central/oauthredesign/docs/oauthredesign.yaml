@@ -1,0 +1,12 @@
+initiative: oauthredesign
+scope: feature
+domain: fourdogs
+service: central
+track: tech-change
+language: go
+docs:
+  path: "_bmad-output/lens-work/initiatives/fourdogs/central/oauthredesign"
+  domain: fourdogs
+  service: central
+created: 2026-04-06T22:00:00Z
+initiative_root: fourdogs-central-oauthredesign

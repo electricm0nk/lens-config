@@ -1,0 +1,35 @@
+name: Velocitysignalwiring
+description: 'Migrated from legacy branch: fourdogs-central-velocitysignalwiring'
+featureId: velocitysignalwiring
+domain: fourdogs
+service: central
+phase: preplan
+track: full
+milestones:
+  businessplan: null
+  techplan: null
+  finalizeplan: null
+  dev-ready: null
+  dev-complete: null
+team:
+- username: Todd Hintzmann
+  role: lead
+dependencies:
+  depends_on: []
+  depended_by: []
+target_repos: []
+links:
+  retrospective: null
+  issues: []
+  pull_request: null
+priority: medium
+created: '2026-04-14T20:31:24Z'
+updated: '2026-04-14T20:31:24Z'
+phase_transitions:
+- phase: preplan
+  timestamp: '2026-04-14T20:31:24Z'
+  user: Todd Hintzmann
+docs:
+  path: docs/fourdogs/central/velocitysignalwiring
+  governance_docs_path: features/fourdogs/central/velocitysignalwiring/docs
+migrated_from: fourdogs-central-velocitysignalwiring

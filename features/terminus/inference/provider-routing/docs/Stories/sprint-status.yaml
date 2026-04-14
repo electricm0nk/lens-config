@@ -1,0 +1,77 @@
+# generated: 2026-05-01
+# project: terminus-inference-provider-routing
+# project_key: NOKEY
+# tracking_system: file-system
+# story_location: docs/terminus/inference/provider-routing/Stories
+
+# STATUS DEFINITIONS:
+# ==================
+# Epic Status:
+#   - backlog: Epic not yet started
+#   - in-progress: Epic actively being worked on
+#   - done: All stories in epic completed
+#
+# Epic Status Transitions:
+#   - backlog → in-progress: Automatically when first story is created (via create-story)
+#   - in-progress → done: Manually when all stories reach 'done' status
+#
+# Story Status:
+#   - backlog: Story only exists in epic file
+#   - ready-for-dev: Story file created in stories folder
+#   - in-progress: Developer actively working on implementation
+#   - review: Ready for code review (via Dev's code-review workflow)
+#   - done: Story completed
+#
+# Retrospective Status:
+#   - optional: Can be completed but not required
+#   - done: Retrospective has been completed
+#
+# WORKFLOW NOTES:
+# ===============
+# - Epic transitions to 'in-progress' automatically when first story is created
+# - Stories can be worked in parallel if team capacity allows
+# - SM typically creates next story after previous one is 'done' to incorporate learnings
+# - Dev moves story to 'review', then runs code-review (fresh context, different LLM recommended)
+
+generated: 2026-05-01
+project: terminus-inference-provider-routing
+project_key: NOKEY
+tracking_system: file-system
+story_location: docs/terminus/inference/provider-routing/Stories
+
+development_status:
+  epic-1: in-progress
+  1-1-package-scaffold-and-sentinel-errors: ready-for-dev
+  1-2-loadprofiles-parses-and-validates-the-yaml-config: ready-for-dev
+  1-3-loadprofiles-resolves-api-keys-from-environment-variables: ready-for-dev
+  1-4-config-tests-with-testdata-fixtures: ready-for-dev
+  epic-1-retrospective: optional
+
+  epic-2: in-progress
+  2-1-routingrequest-routingresponse-and-shared-types: ready-for-dev
+  2-2-resolve-selects-the-highest-priority-eligible-provider: ready-for-dev
+  2-3-resolve-returns-clean-sentinel-errors-for-invalid-and-exhausted-states: ready-for-dev
+  2-4-http-error-mapping-for-routing-sentinel-errors: ready-for-dev
+  2-5-router-test-go-table-driven-resolve-tests: ready-for-dev
+  epic-2-retrospective: optional
+
+  epic-3: in-progress
+  3-1-budgettracker-per-provider-token-limit-and-rwmutex: ready-for-dev
+  3-2-recordusage-accumulates-actual-token-spend: ready-for-dev
+  3-3-resolve-skips-exhausted-providers-and-surfaces-degradation: ready-for-dev
+  3-4-budget-test-go-table-driven-budget-and-fallback-tests: ready-for-dev
+  epic-3-retrospective: optional
+
+  epic-4: in-progress
+  4-1-resolve-emits-structured-log-per-request: ready-for-dev
+  4-2-healthcheck-returns-per-provider-budget-state: ready-for-dev
+  4-3-healthcheck-and-logging-tests: ready-for-dev
+  epic-4-retrospective: optional
+
+  epic-5: in-progress
+  5-1-main-go-wires-loadprofiles-at-startup: ready-for-dev
+  5-2-http-handler-calls-resolve-and-recordusage: ready-for-dev
+  5-3-readyz-wires-healthcheck: ready-for-dev
+  5-4-deployment-artifacts-config-and-helm-argocd: ready-for-dev
+  5-5-smoke-test-routing-layer-active-in-deployed-gateway: ready-for-dev
+  epic-5-retrospective: optional

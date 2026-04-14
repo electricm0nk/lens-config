@@ -1,0 +1,86 @@
+# Initiative configuration — committed to git (Domain 1 artifact)
+id: terminus-inference-gateway
+name: gateway
+initiative: gateway
+scope: feature
+domain: terminus
+service: inference
+track: feature
+language: go
+question_mode: interactive
+created: 2026-04-02T00:00:00Z
+initiative_root: terminus-inference-gateway
+docs:
+  path: docs/terminus/inference/gateway
+  domain: terminus
+  service: inference
+  repo: gateway
+phase_status:
+  businessplan:
+    status: complete
+    pr_url: https://github.com/electricm0nk/bmad.lens.projects/pull/70
+    completedAt: 2026-04-03
+  techplan:
+    status: complete
+    pr_url: https://github.com/electricm0nk/bmad.lens.projects/pull/71
+    completedAt: 2026-04-03
+  devproposal:
+    status: complete
+    pr_url: https://github.com/electricm0nk/bmad.lens.projects/pull/73
+    pr_number: 73
+    completedAt: 2026-04-03
+  sprintplan:
+    status: complete
+    pr_url: https://github.com/electricm0nk/bmad.lens.projects/pull/75
+    pr_number: 75
+    completedAt: 2026-04-03
+promotion_status:
+  medium_to_large:
+    status: complete
+    pr_url: https://github.com/electricm0nk/bmad.lens.projects/pull/74
+    pr_number: 74
+    completedAt: 2026-04-03
+  large_to_base:
+    status: complete
+    pr_url: https://github.com/electricm0nk/bmad.lens.projects/pull/76
+    pr_number: 76
+    completedAt: 2026-04-03
+constitution_gate:
+  status: complete
+  verdict: PASS
+  completedAt: 2026-04-03T22:30:00Z
+current_audience: base
+lifecycle_complete: true
+lifecycle_completedAt: 2026-04-03T22:30:00Z
+dev_status:
+  epic_1:
+    status: complete
+    pr_url: https://github.com/electricm0nk/terminus-inference-gateway/pull/8
+    completedAt: 2026-04-03
+  epic_2:
+    status: complete
+    stories_merged: 6
+    epic_pr_url: https://github.com/electricm0nk/terminus-inference-gateway/pull/15
+    epic_pr_number: 15
+    completedAt: 2026-04-03
+  epic_3:
+    status: complete
+    stories_merged: 3
+    epic_pr_url: https://github.com/electricm0nk/terminus-inference-gateway/pull/19
+    completedAt: 2026-04-03
+  epic_4:
+    status: complete
+    stories_merged: 4
+    gateway_initiative_pr_url: https://github.com/electricm0nk/terminus-inference-gateway/pull/24
+    infra_initiative_pr_url: https://github.com/electricm0nk/terminus.infra/pull/75
+    completedAt: 2026-04-06
+target_repos:
+  - name: terminus-inference-gateway
+    remote: https://github.com/electricm0nk/terminus-inference-gateway
+    local_path: TargetProjects/terminus/inference/terminus-inference-gateway
+    default_branch: main
+  - name: terminus.infra
+    remote: https://github.com/electricm0nk/terminus.infra
+    local_path: TargetProjects/terminus/infra/terminus.infra
+    default_branch: main
+    stories: [4-3, 4-4]

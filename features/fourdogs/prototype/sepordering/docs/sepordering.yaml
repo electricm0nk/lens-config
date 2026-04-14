@@ -1,0 +1,30 @@
+initiative: sepordering
+scope: feature
+domain: fourdogs
+service: prototype
+track: quickdev
+language: unknown
+created: 2026-03-29T20:00:00Z
+initiative_root: fourdogs-prototype-sepordering
+docs:
+  path: docs/fourdogs/prototype/sepordering
+  domain: fourdogs
+  service: prototype
+  repo: sepordering
+  bmad_docs: docs/fourdogs/prototype/sepordering/stories
+target_repos:
+  - name: fourdogs
+    local_path: TargetProjects/fourdogs/prototype/fourdogs
+    repo_url: https://github.com/electricm0nk/fourdogs.git
+current_phase: dev
+phase_status:
+  finalizeplan:
+    status: complete
+    completed_at: "2026-03-30T21:00:00Z"
+    pr_url: "https://github.com/electricm0nk/bmad.lens.projects/pull/52"
+    pr_number: 52
+milestone_status:
+  techplan_to_finalizeplan: complete
+  techplan_to_finalizeplan_pr: 53
+  techplan_to_finalizeplan_gate: constitution-gate
+  techplan_to_finalizeplan_verdict: PASS

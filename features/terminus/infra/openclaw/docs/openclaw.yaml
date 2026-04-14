@@ -1,0 +1,31 @@
+# Initiative configuration — committed to git (Domain 1 artifact)
+id: terminus-infra-openclaw
+name: openclaw
+initiative: openclaw
+scope: feature
+domain: terminus
+service: infra
+track: tech-change
+language: unknown
+question_mode: interactive
+created: 2026-03-21T00:00:00Z
+initiative_root: terminus-infra-openclaw
+docs:
+  path: docs/terminus/infra/openclaw
+  domain: terminus
+  service: infra
+  repo: openclaw
+architecture_context:
+  target_repo: terminus.infra
+  toolchain:
+    provisioning: opentofu-1.11.0
+    configuration: ansible-core-2.19
+    secrets_authoring: sops+age
+    secrets_runtime: vault-kv-v2-1.21.4
+    state_backend: consul-1.22.5
+  dependencies:
+    - terminus-infra-secrets: Vault and Consul must be bootstrapped first
+  notes:
+    - Purpose and scope to be defined in techplan phase
+    - Vault path convention: secret/terminus/{env}/openclaw/...
+    - Per-environment identity isolation applies (dev, prod)
