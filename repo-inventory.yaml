@@ -28,3 +28,6 @@ repositories:
 - name: lens-governance
   remote_url: https://github.com/electricm0nk/lens.config.git
   local_path: TargetProjects/lens/lens-governance
+- name: terminus-inference-gateway
+  remote_url: https://github.com/electricm0nk/terminus-inference-gateway.git
+  local_path: TargetProjects/terminus/inference/terminus-inference-gateway
