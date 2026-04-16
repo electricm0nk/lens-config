@@ -531,14 +531,14 @@ features:
   featureId: prometheus
   domain: terminus
   service: infra
-  status: businessplan
+  status: archived
   owner: electrikm0nk
   plan_branch: prometheus-plan
   related_features:
     depends_on: []
     blocks: []
     related: []
-  updated_at: '2026-04-14T23:11:48Z'
+  updated_at: '2026-04-16T18:02:36Z'
   summary: ''
 - id: prometheus-wiring
   featureId: prometheus-wiring
