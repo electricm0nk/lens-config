@@ -3,12 +3,12 @@ description: ''
 featureId: proxmox-vm-boot-order
 domain: terminus
 service: infra
-phase: techplan-complete
+phase: finalizeplan-complete
 track: tech-change
 milestones:
   techplan: '2026-04-17T00:00:00Z'
-  finalizeplan: null
-  dev-ready: null
+  finalizeplan: '2026-04-17T00:00:00Z'
+  dev-ready: '2026-04-17T00:00:00Z'
 team:
 - username: Todd
   role: lead
@@ -22,12 +22,18 @@ links:
   pull_request: null
 priority: medium
 created: '2026-04-17T12:39:42Z'
-updated: '2026-04-17T12:39:42Z'
+updated: '2026-04-17T00:00:00Z'
 phase_transitions:
 - phase: techplan
   timestamp: '2026-04-17T12:39:42Z'
   user: Todd
 - phase: techplan-complete
+  timestamp: '2026-04-17T00:00:00Z'
+  user: Todd
+- phase: finalizeplan
+  timestamp: '2026-04-17T00:00:00Z'
+  user: Todd
+- phase: finalizeplan-complete
   timestamp: '2026-04-17T00:00:00Z'
   user: Todd
 docs:
