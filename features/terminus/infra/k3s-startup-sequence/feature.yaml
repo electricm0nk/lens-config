@@ -3,14 +3,14 @@ description: ''
 featureId: k3s-startup-sequence
 domain: terminus
 service: infra
-phase: finalizeplan-complete
+phase: dev-complete
 track: tech-change
 milestones:
   businessplan: null
   techplan: null
   finalizeplan: null
   dev-ready: null
-  dev-complete: null
+  dev-complete: "fe85c3a"
 team:
 - username: electrikm0nk
   role: lead
@@ -24,7 +24,7 @@ links:
   pull_request: "https://github.com/electricm0nk/terminus.infra/pull/107"
 priority: medium
 created: '2026-04-17T17:28:01Z'
-updated: '2026-04-19T00:00:00Z'
+updated: '2026-04-17T00:00:00Z'
 phase_transitions:
 - phase: techplan
   timestamp: '2026-04-17T17:28:01Z'
@@ -34,6 +34,9 @@ phase_transitions:
   user: electrikm0nk
 - phase: finalizeplan-complete
   timestamp: '2026-04-19T00:00:00Z'
+  user: electrikm0nk
+- phase: dev-complete
+  timestamp: '2026-04-17T00:00:00Z'
   user: electrikm0nk
 docs:
   path: docs/terminus/infra/k3s-startup-sequence
