@@ -15,7 +15,12 @@ team:
 dependencies:
   depends_on: []
   depended_by: []
-target_repos: []
+target_repos:
+- repo: terminus.infra
+  path: TargetProjects/terminus/infra/terminus.infra
+  remote: https://github.com/electricm0nk/terminus.infra.git
+  default_branch: main
+  dev_branch_mode: null
 links:
   retrospective: null
   issues: []
