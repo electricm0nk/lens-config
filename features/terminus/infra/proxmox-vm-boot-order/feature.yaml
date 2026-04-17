@@ -3,14 +3,12 @@ description: ''
 featureId: proxmox-vm-boot-order
 domain: terminus
 service: infra
-phase: businessplan
-track: quickplan
+phase: techplan
+track: tech-change
 milestones:
-  businessplan: null
   techplan: null
   finalizeplan: null
   dev-ready: null
-  dev-complete: null
 team:
 - username: Todd
   role: lead
@@ -26,7 +24,7 @@ priority: medium
 created: '2026-04-17T12:39:42Z'
 updated: '2026-04-17T12:39:42Z'
 phase_transitions:
-- phase: businessplan
+- phase: techplan
   timestamp: '2026-04-17T12:39:42Z'
   user: Todd
 docs:

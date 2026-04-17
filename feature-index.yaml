@@ -557,7 +557,7 @@ features:
   featureId: proxmox-vm-boot-order
   domain: terminus
   service: infra
-  status: businessplan
+  status: techplan
   owner: Todd
   plan_branch: proxmox-vm-boot-order-plan
   related_features:
