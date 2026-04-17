@@ -565,4 +565,18 @@ features:
     blocks: []
     related: []
   updated_at: '2026-04-17T00:00:00Z'
-  summary: 'Add startup{} blocks and on_boot=true to all Proxmox VM modules for deterministic boot ordering on hypervisor recovery'
+  summary: Add startup{} blocks and on_boot=true to all Proxmox VM modules for deterministic
+    boot ordering on hypervisor recovery
+- id: k3s-startup-sequence
+  featureId: k3s-startup-sequence
+  domain: terminus
+  service: infra
+  status: techplan
+  owner: electrikm0nk
+  plan_branch: k3s-startup-sequence-plan
+  related_features:
+    depends_on: []
+    blocks: []
+    related: []
+  updated_at: '2026-04-17T17:28:01Z'
+  summary: ''
