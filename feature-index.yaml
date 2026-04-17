@@ -557,7 +557,7 @@ features:
   featureId: proxmox-vm-boot-order
   domain: terminus
   service: infra
-  status: techplan
+  status: techplan-complete
   owner: Todd
   plan_branch: proxmox-vm-boot-order-plan
   related_features:
@@ -565,4 +565,4 @@ features:
     blocks: []
     related: []
   updated_at: '2026-04-17T12:39:42Z'
-  summary: ''
+  summary: 'Add startup{} blocks and on_boot=true to all Proxmox VM modules for deterministic boot ordering on hypervisor recovery'

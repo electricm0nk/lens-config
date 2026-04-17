@@ -3,10 +3,10 @@ description: ''
 featureId: proxmox-vm-boot-order
 domain: terminus
 service: infra
-phase: techplan
+phase: techplan-complete
 track: tech-change
 milestones:
-  techplan: null
+  techplan: '2026-04-17T00:00:00Z'
   finalizeplan: null
   dev-ready: null
 team:
@@ -26,6 +26,9 @@ updated: '2026-04-17T12:39:42Z'
 phase_transitions:
 - phase: techplan
   timestamp: '2026-04-17T12:39:42Z'
+  user: Todd
+- phase: techplan-complete
+  timestamp: '2026-04-17T00:00:00Z'
   user: Todd
 docs:
   path: docs/terminus/infra/proxmox-vm-boot-order
