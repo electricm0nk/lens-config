@@ -1,0 +1,51 @@
+# generated: 2026-04-19
+# project: k3s-startup-sequence
+# project_key: NOKEY
+# tracking_system: file-system
+# story_location: docs/terminus/infra/k3s-startup-sequence/stories
+
+# STATUS DEFINITIONS:
+# ==================
+# Epic Status:
+#   - backlog: Epic not yet started
+#   - in-progress: Epic actively being worked on
+#   - done: All stories in epic completed
+#
+# Epic Status Transitions:
+#   - backlog → in-progress: Automatically when first story is created (via create-story)
+#   - in-progress → done: Manually when all stories reach 'done' status
+#
+# Story Status:
+#   - backlog: Story only exists in epic file
+#   - ready-for-dev: Story file created in stories folder
+#   - in-progress: Developer actively working on implementation
+#   - review: Ready for code review (via Dev's code-review workflow)
+#   - done: Story completed
+#
+# Retrospective Status:
+#   - optional: Can be completed but not required
+#   - done: Retrospective has been completed
+#
+# WORKFLOW NOTES:
+# ===============
+# - Epic 1 (critical gaps) should be applied before Epic 2 — establishes baseline wave ordering first
+# - Both epics can be implemented (code + review) independently; sequencing is apply-time only
+# - Each story's wave-compliance kubectl command is the post-merge smoke gate
+# - All changes are annotation-only — no Helm values or chart changes, no maintenance window required
+
+generated: 2026-04-19
+project: k3s-startup-sequence
+project_key: NOKEY
+tracking_system: file-system
+story_location: docs/terminus/infra/k3s-startup-sequence/stories
+
+development_status:
+  # ── Epic 1: Critical Ordering Gaps ─────────────────────────────────────────
+  epic-1: backlog
+  1-1-add-sync-wave-annotations-to-critical-ordering-gaps: ready-for-dev
+  epic-1-retrospective: optional
+
+  # ── Epic 2: Wave Consolidation ──────────────────────────────────────────────
+  epic-2: backlog
+  2-1-correct-sync-wave-values-consolidation: ready-for-dev
+  epic-2-retrospective: optional
