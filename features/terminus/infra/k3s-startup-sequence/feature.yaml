@@ -3,7 +3,7 @@ description: ''
 featureId: k3s-startup-sequence
 domain: terminus
 service: infra
-phase: techplan
+phase: techplan-complete
 track: tech-change
 milestones:
   businessplan: null
@@ -28,6 +28,9 @@ updated: '2026-04-17T17:28:01Z'
 phase_transitions:
 - phase: techplan
   timestamp: '2026-04-17T17:28:01Z'
+  user: electrikm0nk
+- phase: techplan-complete
+  timestamp: '2026-04-17T18:00:00Z'
   user: electrikm0nk
 docs:
   path: docs/terminus/infra/k3s-startup-sequence
