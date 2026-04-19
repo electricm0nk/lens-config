@@ -584,12 +584,12 @@ features:
   featureId: portal3
   domain: terminus
   service: portal
-  status: expressplan
+  status: expressplan-complete
   owner: Todd Hintzmann
   plan_branch: portal3-plan
   related_features:
     depends_on: []
     blocks: []
     related: []
-  updated_at: '2026-04-19T01:38:11Z'
-  summary: ''
+  updated_at: '2026-04-19T01:45:00Z'
+  summary: 'ExpressPlan complete: stabilization-first portal upgrade focused on service-catalog correctness, UX improvements, and bug fixes.'
