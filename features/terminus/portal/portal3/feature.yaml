@@ -3,7 +3,7 @@ description: ''
 featureId: portal3
 domain: terminus
 service: portal
-phase: expressplan-complete
+phase: finalizeplan-complete
 track: express
 milestones:
   businessplan: null
@@ -24,13 +24,16 @@ links:
   pull_request: null
 priority: medium
 created: '2026-04-19T01:38:11Z'
-updated: '2026-04-19T01:45:00Z'
+updated: '2026-04-19T02:18:00Z'
 phase_transitions:
 - phase: expressplan
   timestamp: '2026-04-19T01:38:11Z'
   user: Todd Hintzmann
 - phase: expressplan-complete
   timestamp: '2026-04-19T01:45:00Z'
+  user: Todd Hintzmann
+- phase: finalizeplan-complete
+  timestamp: '2026-04-19T02:18:00Z'
   user: Todd Hintzmann
 docs:
   path: docs/terminus/portal/portal3
