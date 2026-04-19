@@ -10,7 +10,7 @@ repositories:
 - name: terminus-portal
   remote_url: https://github.com/electricm0nk/terminus-portal.git
   local_path: TargetProjects/terminus/portal/terminus-portal
-  default_branch: main
+  default_branch: develop
   language: html
   bmad_configured: false
   domain: terminus
