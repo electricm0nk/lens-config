@@ -1,0 +1,9 @@
+kind: service
+id: fourdogs-central
+name: central
+domain: fourdogs
+service: central
+status: active
+owner: Todd Hintzmann
+created: '2026-04-20T14:25:45Z'
+updated: '2026-04-20T14:25:45Z'

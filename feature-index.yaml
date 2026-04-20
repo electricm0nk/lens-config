@@ -607,3 +607,16 @@ features:
     related: []
   updated_at: '2026-04-20T12:36:14Z'
   summary: ''
+- id: uifix2
+  featureId: uifix2
+  domain: fourdogs
+  service: central
+  status: expressplan
+  owner: Todd Hintzmann
+  plan_branch: uifix2-plan
+  related_features:
+    depends_on: []
+    blocks: []
+    related: []
+  updated_at: '2026-04-20T14:25:45Z'
+  summary: ''
