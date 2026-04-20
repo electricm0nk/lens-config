@@ -6,8 +6,8 @@ service: etailpet-api
 phase: expressplan
 track: express
 milestones:
-  businessplan: null
-  techplan: null
+  businessplan: '2026-04-20T00:00:00Z'
+  techplan: '2026-04-20T00:00:00Z'
   finalizeplan: null
   dev-ready: null
   dev-complete: null
@@ -24,10 +24,16 @@ links:
   pull_request: null
 priority: medium
 created: '2026-04-20T12:36:14Z'
-updated: '2026-04-20T12:36:14Z'
+updated: '2026-04-20T00:00:00Z'
 phase_transitions:
 - phase: expressplan
   timestamp: '2026-04-20T12:36:14Z'
+  user: Todd Hintzmann
+- phase: expressplan-complete
+  timestamp: '2026-04-20T00:00:00Z'
+  user: Todd Hintzmann
+- phase: expressplan-complete
+  timestamp: '2026-04-20T00:00:00Z'
   user: Todd Hintzmann
 docs:
   path: docs/fourdogs/etailpet-api/transactions
