@@ -3,13 +3,13 @@ description: ''
 featureId: uifix2
 domain: fourdogs
 service: central
-phase: expressplan-complete
+phase: dev-ready
 track: express
 milestones:
   businessplan: '2026-04-28T00:00:00Z'
   techplan: '2026-04-28T00:00:00Z'
-  finalizeplan: null
-  dev-ready: null
+  finalizeplan: '2026-04-28T00:00:00Z'
+  dev-ready: '2026-04-28T00:00:00Z'
   dev-complete: null
 team:
 - username: Todd Hintzmann
@@ -30,6 +30,12 @@ phase_transitions:
   timestamp: '2026-04-20T14:25:45Z'
   user: Todd Hintzmann
 - phase: expressplan-complete
+  timestamp: '2026-04-28T00:00:00Z'
+  user: Todd Hintzmann
+- phase: finalizeplan
+  timestamp: '2026-04-28T00:00:00Z'
+  user: Todd Hintzmann
+- phase: dev-ready
   timestamp: '2026-04-28T00:00:00Z'
   user: Todd Hintzmann
 docs:

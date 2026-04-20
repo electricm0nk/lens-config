@@ -2,6 +2,14 @@
 feature: uifix2
 doc_type: sprint-plan
 status: draft
+goal: "Deliver all four UI defect fixes to fourdogs/central develop in a single milestone"
+key_decisions:
+  - Single sprint, no hard boundary
+  - 4 stories are independent and can be implemented in any order
+open_questions: []
+depends_on:
+  - velocitysignalwiring2
+blocks: []
 updated_at: "2026-04-28"
 ---
 

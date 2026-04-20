@@ -611,12 +611,27 @@ features:
   featureId: uifix2
   domain: fourdogs
   service: central
-  status: expressplan
+  status: dev-ready
+  phase: dev-ready
+  track: express
   owner: Todd Hintzmann
   plan_branch: uifix2-plan
   related_features:
-    depends_on: []
+    depends_on:
+    - velocitysignalwiring2
     blocks: []
     related: []
-  updated_at: '2026-04-20T14:25:45Z'
-  summary: ''
+  updated_at: '2026-04-28T00:00:00Z'
+  goal: "Resolve four UX defects in fourdogs/central: vendor-mismatched catalog tabs,
+    overly broad priority flags, spurious recommendation badges, broken Load Recommendations
+    button."
+  docs_present:
+  - business-plan
+  - tech-plan
+  - sprint-plan
+  - stories
+  summary: "Four surgical UI fixes in fourdogs-central-ui. ADR-1: filter catalogTabs
+    to vendor-present tabs. ADR-2: prioritySkuIds from server data. ADR-3: tier labels
+    gated on kayleeQty. ADR-4: recommendations use riskScore fallback. Express track,
+    4 stories ready for /dev."
+  stale: false
