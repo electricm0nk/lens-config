@@ -3,12 +3,12 @@ description: ''
 featureId: transactions
 domain: fourdogs
 service: etailpet-api
-phase: expressplan
+phase: finalizeplan-complete
 track: express
 milestones:
   businessplan: '2026-04-20T00:00:00Z'
   techplan: '2026-04-20T00:00:00Z'
-  finalizeplan: null
+  finalizeplan: '2026-04-20T00:00:00Z'
   dev-ready: null
   dev-complete: null
 team:
@@ -32,7 +32,7 @@ phase_transitions:
 - phase: expressplan-complete
   timestamp: '2026-04-20T00:00:00Z'
   user: Todd Hintzmann
-- phase: expressplan-complete
+- phase: finalizeplan-complete
   timestamp: '2026-04-20T00:00:00Z'
   user: Todd Hintzmann
 docs:
