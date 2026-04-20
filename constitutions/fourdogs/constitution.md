@@ -1,5 +1,5 @@
 ---
-permitted_tracks: [quickplan, full, hotfix, tech-change]
+permitted_tracks: [quickplan, full, express, hotfix, tech-change]
 required_artifacts:
   planning:
     - business-plan
