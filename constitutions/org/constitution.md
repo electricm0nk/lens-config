@@ -1,3 +1,189 @@
+---
+permitted_tracks: [Full, Feature, tech-change, hotfix, hotfix-express, spike, quickdev, express]
+required_artifacts:
+  planning:
+    - business-plan
+    - tech-plan
+    - architecture
+  dev:
+    - stories
+    - runbook
+  complete:
+    - sign-off
+gate_mode: hard
+sensing_gate_mode: informational
+additional_review_participants:
+  - security-team
+  - code-review
+enforce_stories: true
+enforce_review: true
+
+# Article Registry — companion schema v0.1-draft; approved 2026-04-20
+# Field 'articles' is not parsed by constitution-ops.py v1.x (current engine).
+# It is the source of truth for the future article-registry validator model.
+schema_version: "0.1-draft"
+articles:
+  - number: 1
+    id: org.track-declaration-required
+    title: Track Declaration Required
+    gate: hard
+    applies_to:
+      tracks: [Full, Feature, tech-change, hotfix, hotfix-express, spike, quickdev, express]
+      phases: [preplan, businessplan, techplan, finalizeplan, expressplan, dev, complete]
+    validator:
+      name: validate-track-declaration
+
+  - number: 2
+    id: org.phase-artifacts-before-gate
+    title: Phase Artifacts Before Gate
+    gate: hard
+    applies_to:
+      tracks: [Full, Feature, tech-change, hotfix, hotfix-express, spike, quickdev, express]
+      phases: [preplan, businessplan, techplan, finalizeplan, expressplan, dev, complete]
+    validator:
+      name: validate-phase-artifacts
+
+  - number: 3
+    id: org.architecture.documentation-required
+    title: Architecture Documentation Required
+    gate: hard
+    applies_to:
+      tracks: [Full, Feature, tech-change, hotfix, hotfix-express, spike, quickdev, express]
+      phases: [preplan, businessplan, techplan, finalizeplan, expressplan, dev, complete]
+    validator:
+      name: validate-architecture-documentation
+
+  - number: 4
+    id: org.no-confidential-data-exfiltration
+    title: No Confidential Data Exfiltration
+    gate: hard
+    applies_to:
+      tracks: [Full, Feature, tech-change, hotfix, hotfix-express, spike, quickdev, express]
+      phases: [preplan, businessplan, techplan, finalizeplan, expressplan, dev, complete]
+    validator:
+      name: validate-confidential-data-egress
+
+  - number: 5
+    id: org.lifecycle-evidence-discipline
+    title: Lifecycle Evidence Discipline
+    gate: hard
+    applies_to:
+      tracks: [Full, Feature, tech-change, hotfix, hotfix-express, spike, quickdev, express]
+      phases: [preplan, businessplan, techplan, finalizeplan, expressplan, dev, complete]
+    validator:
+      name: validate-lifecycle-evidence
+
+  - number: 6
+    id: org.additive-governance
+    title: Additive Governance
+    gate: hard
+    applies_to:
+      tracks: [Full, Feature, tech-change, hotfix, hotfix-express, spike, quickdev, express]
+      phases: [preplan, businessplan, techplan, finalizeplan, expressplan, dev, complete]
+    validator:
+      name: validate-additive-governance
+
+  - number: 7
+    id: org.tdd.red-green-discipline
+    title: TDD Red-Green Discipline
+    gate: hard
+    applies_to:
+      tracks: [Full, Feature, tech-change, hotfix, hotfix-express, spike, quickdev, express]
+      phases: [preplan, businessplan, techplan, finalizeplan, expressplan, dev, complete]
+    validator:
+      name: validate-tdd-red-green
+
+  - number: 8
+    id: org.bdd.acceptance-criteria-fully-implemented
+    title: BDD Acceptance Criteria — Fully Implemented Tests
+    gate: hard
+    applies_to:
+      tracks: [Full, Feature, tech-change, hotfix, hotfix-express, spike, quickdev, express]
+      phases: [preplan, businessplan, techplan, finalizeplan, expressplan, dev, complete]
+    validator:
+      name: validate-bdd-acceptance-coverage
+
+  - number: 9
+    id: org.security-first
+    title: Security First
+    gate: hard
+    applies_to:
+      tracks: [Full, Feature, tech-change, hotfix, hotfix-express, spike, quickdev, express]
+      phases: [preplan, businessplan, techplan, finalizeplan, expressplan, dev, complete]
+    validator:
+      name: validate-security-first
+
+  - number: 10
+    id: org.repository-is-agents-source-of-truth
+    title: Repository Is the Agent's Source of Truth
+    gate: hard
+    applies_to:
+      tracks: [Full, Feature, tech-change, hotfix, hotfix-express, spike, quickdev, express]
+      phases: [preplan, businessplan, techplan, finalizeplan, expressplan, dev, complete]
+    validator:
+      name: validate-agent-source-of-truth
+
+  - number: 11
+    id: org.prefer-source-correction-and-maintain-runbook
+    title: Prefer Source-Correction; Always Maintain a Runbook
+    gate: hard
+    applies_to:
+      tracks: [Full, Feature, tech-change, hotfix, hotfix-express, spike, quickdev, express]
+      phases: [preplan, businessplan, techplan, finalizeplan, expressplan, dev, complete]
+    validator:
+      name: validate-source-correction-and-runbook
+
+  - number: 12
+    id: org.agent-entrypoint-parity
+    title: Agent Entry Point Parity
+    gate: hard
+    applies_to:
+      tracks: [Full, Feature, tech-change, hotfix, hotfix-express, spike, quickdev, express]
+      phases: [preplan, businessplan, techplan, finalizeplan, expressplan, dev, complete]
+    validator:
+      name: validate-agent-entrypoint-parity
+
+  - number: 13
+    id: org.ide-adapter-installation-and-verification
+    title: IDE Adapter Installation and Verification
+    gate: hard
+    applies_to:
+      tracks: [Full, Feature, tech-change, hotfix, hotfix-express, spike, quickdev, express]
+      phases: [preplan, businessplan, techplan, finalizeplan, expressplan, dev, complete]
+    validator:
+      name: validate-ide-adapter-installation
+
+  - number: 14
+    id: org.automated-phase-state-advancement-solo-operator
+    title: Automated Phase State Advancement (Solo Operator)
+    gate: hard
+    applies_to:
+      tracks: [Full, Feature, tech-change, hotfix, hotfix-express, spike, quickdev, express]
+      phases: [preplan, businessplan, techplan, finalizeplan, expressplan, dev, complete]
+    validator:
+      name: validate-solo-operator-phase-advancement
+
+  - number: 15
+    id: org.ai-safety-primacy
+    title: AI Safety Primacy
+    gate: hard
+    applies_to:
+      tracks: [Full, Feature, tech-change, hotfix, hotfix-express, spike, quickdev, express]
+      phases: [preplan, businessplan, techplan, finalizeplan, expressplan, dev, complete]
+    validator:
+      name: validate-ai-safety-primacy
+
+  - number: 16
+    id: org.internal-infrastructure-primacy
+    title: Internal Infrastructure Primacy
+    gate: hard
+    applies_to:
+      tracks: [Full, Feature, tech-change, hotfix, hotfix-express, spike, quickdev, express]
+      phases: [preplan, businessplan, techplan, finalizeplan, expressplan, dev, complete]
+    validator:
+      name: validate-internal-infrastructure-primacy
+---
+
 # Org Constitution: electricm0nk
 
 **Layer:** org
@@ -17,13 +203,13 @@ This constitution governs all software initiatives under the electricm0nk organi
 
 ### Article 1: Track Declaration Required
 
-**Rule:** Every initiative must declare a LENS lifecycle track (full, feature, tech-change, hotfix, or spike) before any phase work begins.
+**Rule:** Every initiative must declare a LENS lifecycle track (Full, Feature, tech-change, hotfix, hotfix-express, spike, quickdev, or express) before any phase work begins.
 
 **Rationale:** Ensures consistent scoping and gates are applied from the start.
 
 **Evidence Required:** `initiative.yaml` contains a non-empty `track` field.
 
-**Gate:** informational
+**Gate:** hard
 **Status:** active
 
 ---
@@ -36,7 +222,7 @@ This constitution governs all software initiatives under the electricm0nk organi
 
 **Evidence Required:** Phase artifact files exist and contain substantive content at the time of gate evaluation.
 
-**Gate:** informational
+**Gate:** hard
 **Status:** active
 
 ---
@@ -49,7 +235,7 @@ This constitution governs all software initiatives under the electricm0nk organi
 
 **Evidence Required:** `architecture.md` exists and is non-empty in the techplan phase artifacts.
 
-**Gate:** informational
+**Gate:** hard
 **Status:** active
 
 ---
@@ -62,7 +248,7 @@ This constitution governs all software initiatives under the electricm0nk organi
 
 **Evidence Required:** Architecture documentation contains explicit data flow statements identifying all external data transmission paths and their justification.
 
-**Gate:** informational
+**Gate:** hard
 **Status:** active
 
 ---
@@ -75,7 +261,7 @@ This constitution governs all software initiatives under the electricm0nk organi
 
 **Evidence Required:** Initiative artifacts, gate outputs, and state transitions are committed and attributable to a specific lifecycle event.
 
-**Gate:** informational
+**Gate:** hard
 **Status:** active
 
 ---
@@ -88,7 +274,7 @@ This constitution governs all software initiatives under the electricm0nk organi
 
 **Evidence Required:** Any constitution amendment or new child constitution must include an inheritance validation record confirming no parent rule was weakened or removed.
 
-**Gate:** informational
+**Gate:** hard
 **Status:** active
 
 ---
@@ -101,7 +287,7 @@ This constitution governs all software initiatives under the electricm0nk organi
 
 **Evidence Required:** Commit history must demonstrate the red-green cycle (failing test commit precedes passing implementation commit) for each story or task. CI gates must include a test coverage check showing all new paths are covered.
 
-**Gate:** informational
+**Gate:** hard
 **Status:** active
 
 ---
@@ -114,7 +300,7 @@ This constitution governs all software initiatives under the electricm0nk organi
 
 **Evidence Required:** BDD test suite must have one or more fully implemented, passing scenarios per acceptance criterion. No pending, skip, xit, xdescribe, empty `it()`, or equivalent stub constructs may appear in the accepted test suite. Code review must confirm no stubs bypass this rule.
 
-**Gate:** informational
+**Gate:** hard
 **Status:** active
 
 ---
@@ -127,7 +313,7 @@ This constitution governs all software initiatives under the electricm0nk organi
 
 **Evidence Required:** Architecture and implementation artifacts must identify secret handling, trust boundaries, credential storage approach, and applicable security controls. Code review must confirm that no secrets are committed and that the implementation follows documented security best-practice patterns appropriate to the technology in use.
 
-**Gate:** informational
+**Gate:** hard
 **Status:** active
 
 ---
@@ -146,7 +332,7 @@ This constitution governs all software initiatives under the electricm0nk organi
 
 **Evidence Required:** Initiative artifacts and architecture documentation must be committed to the repository. Significant decisions that shape implementation — including rationale for patterns, exceptions, and tradeoffs — must appear in committed documents rather than external sources. Agent-facing knowledge files must use a map-and-pointer structure rather than a single monolithic file.
 
-**Gate:** informational
+**Gate:** hard
 **Status:** active
 
 ---
@@ -164,7 +350,7 @@ This constitution governs all software initiatives under the electricm0nk organi
 - The `runbook.md` must include a `Last Verified` timestamp updated each session. It must cross-reference the `pre-repave-manifest.md` when one exists.
 - The `pre-repave-manifest.md` must cross-reference the `runbook.md`.
 
-**Gate:** informational
+**Gate:** hard
 **Status:** active
 
 ---
@@ -183,7 +369,7 @@ This constitution governs all software initiatives under the electricm0nk organi
 - Preflight sync covers all entry point files from the release module.
 - When a canonical entry point file is updated in the release module, all peer files are updated in the same change set.
 
-**Gate:** informational
+**Gate:** hard
 **Status:** active
 
 ---
@@ -203,7 +389,7 @@ This constitution governs all software initiatives under the electricm0nk organi
 - Preflight log confirms an adapter presence check was performed on the session.
 - When an adapter was absent before a preflight run, the preflight log records that the installer was invoked.
 
-**Gate:** informational
+**Gate:** hard
 **Status:** active
 
 ---
@@ -220,7 +406,7 @@ This constitution governs all software initiatives under the electricm0nk organi
 
 **Evidence Required:** `_bmad-output/lens-work/personal/profile.yaml` is present (confirms this is a managed workspace, not an ad-hoc environment).
 
-**Gate:** informational
+**Gate:** hard
 **Status:** active
 
 ---
@@ -247,7 +433,7 @@ This constitution governs all software initiatives under the electricm0nk organi
 
 **Evidence Required:** Where an AI safety exception has been invoked, all seven exception artifacts must exist as committed files (or committed sections of existing architecture or decision files) in the active initiative artifact set. Architecture and design documents for AI components must include explicit safety and data-handling sections. Code review must confirm that no known unmitigated risks were introduced without an approved exception on record.
 
-**Gate:** informational
+**Gate:** hard
 **Status:** active
 
 ---
@@ -260,7 +446,7 @@ This constitution governs all software initiatives under the electricm0nk organi
 
 **Evidence Required:** Architecture and implementation artifacts must enumerate all infrastructure dependencies and confirm each is sourced from the internal terminus stack where an internal equivalent exists. Where an external service is used, a corresponding `.todo` entry must exist documenting: the external dependency chosen, the internal alternative considered, and the reason for the deviation. The entry must reference this article and must not be marked resolved until it has been reviewed.
 
-**Gate:** informational
+**Gate:** hard
 **Status:** active
 
 ---
@@ -375,6 +561,7 @@ This constitution governs all software initiatives under the electricm0nk organi
 | 2026-04-03T00:00:00Z | Amended | Added Article 17: .todo Folder as Workflow Discovery Log — every initiative level requires a .todo/ folder for capturing defects, ideas, enhancements, and deferred decisions; reviewed at each phase gate; initiative cannot reach done with unreviewed entries |
 | 2026-04-04T00:00:00Z | Amended | Added Article 19: Semaphore UI — Imperative Job Runner in the Terminus Platform — establishes Semaphore as the exclusive imperative job runner, defines the reconciliation test for ArgoCD vs Semaphore ownership, enumerates Semaphore's canonical responsibilities and the standard workload deployment sequence, enforces blast-and-repave rule requiring all job definitions and migration files in the repository |
 | 2026-04-10T00:00:00Z | Amended | Added Article 20: Go Is the Default Runtime for Platform Services and Temporal Workers — Go is the default runtime for all platform services and Temporal workers; non-Go deviations require a language decision record approved before the techplan gate |
+| 2026-04-20T00:00:00Z | Amended | Articles 1–16 promoted from `informational` to `hard` gates following interactive approval pass; YAML frontmatter added with canonical track set (Full, Feature, tech-change, hotfix, hotfix-express, spike, quickdev, express), required artifacts, `gate_mode: hard`, and article-registry companion schema v0.1-draft covering all 16 articles with stable IDs and validator names |
 
 ---
 
