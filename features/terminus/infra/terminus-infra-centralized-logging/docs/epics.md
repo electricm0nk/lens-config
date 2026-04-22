@@ -23,19 +23,21 @@ created_at: 2026-04-23T00:00:00Z
 
 ## Epic E1 — Log Backend Foundation
 
-**Goal:** Deploy MinIO in-cluster as S3-compatible object storage, then deploy Loki (prod + dev). Prod Loki uses MinIO S3 backend (100Gi local-path PVC, `terminus-loki-prod` bucket). Dev Loki uses 20Gi local-path PVC (upgrade staging only). Includes all Phase 0 prerequisites (MinIO ArgoCD app, Vault credentials, ExternalSecret).
+**Goal:** Set up Loki S3 credentials for Synology-hosted MinIO, then deploy Loki (prod + dev). Prod Loki uses Synology MinIO (`http://10.0.0.2:9000`, `loki` bucket) as S3 backend. Dev Loki uses 20Gi local-path PVC (upgrade staging only). Includes all Phase 0 prerequisites (Vault credentials, ExternalSecret, bucket verification).
 
 **Acceptance Criteria:**
-- `minio` pod healthy in `monitoring` namespace; `terminus-loki-prod` bucket exists
+- `minio` pod healthy in `monitoring` namespace: N/A — MinIO runs externally on Synology NAS
+- Synology MinIO reachable from cluster: `curl http://10.0.0.2:9000/minio/health/live` returns 200 OK
+- `loki` bucket exists on Synology MinIO
 - `loki` pod healthy in `monitoring` namespace; logs ingested from manual push test
 - `loki-dev` pod healthy in `monitoring-dev` namespace; 20Gi PVC bound
 - `loki-s3-creds` ExternalSecret materializes successfully in `monitoring` namespace
-- ArgoCD apps `minio`, `loki`, and `loki-dev` sync cleanly with no drift
+- ArgoCD apps `loki` and `loki-dev` sync cleanly with no drift
 
 **Dependencies:** Vault and ESO operational (verified by `secrets` feature)
 
 **Stories:**
-- E1-S1: MinIO Deploy + S3 Credentials — ArgoCD app + Vault + ExternalSecret
+- E1-S1: Loki S3 Credentials — Vault KV + ExternalSecret (Synology MinIO at 10.0.0.2:9000)
 - E1-S2: Loki Prod Deployment — Helm values + ArgoCD app
 - E1-S3: Loki Dev Deployment — Helm values + ArgoCD app (upgrade staging)
 

@@ -10,7 +10,7 @@ sprints:
     status: not-started
     stories:
       - id: E1-S1
-        title: "MinIO Deploy + S3 Credentials — ArgoCD App + Vault + ExternalSecret"
+        title: "Loki S3 Credentials — Vault KV + ExternalSecret (Synology MinIO 10.0.0.2:9000)"
         status: not-started
         epic: E1
       - id: E1-S2
@@ -111,7 +111,7 @@ open_items:
     sprint: 2
     story: E4-S1
   - id: OI-4
-    description: "Verify MinIO 100Gi local-path PVC storage sizing and node affinity requirements"
+    description: "Verify Synology MinIO accessibility from cluster and loki bucket existence (http://10.0.0.2:9000)"
     blocking: false
     sprint: 1
     story: E1-S1

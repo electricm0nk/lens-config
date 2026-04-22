@@ -5,7 +5,7 @@ status: draft
 goal: "Deliver a centralized log aggregation pipeline for all k3s workloads and VM-side services, with Loki as the backend, Alloy as the cluster-wide collector, and Grafana as the query surface."
 key_decisions:
   - Use Grafana Loki (single-binary mode) as the log backend — already assumed in all existing docs, native Grafana integration, no licensing cost.
-  - Use MinIO in-cluster as Loki prod object storage backend — S3-compatible single-instance StatefulSet in `monitoring` namespace, 100Gi local-path PVC; decouples Loki pod lifecycle from log storage.
+  - Use Synology-hosted MinIO as Loki prod object storage backend — MinIO runs on the Synology NAS (10.0.0.2:9000), S3-compatible, external to the cluster; decouples Loki pod lifecycle from log storage with NAS-backed durability.
   - Use local-path PVC for loki-dev only — dev instance is for upgrade staging/validation, not real log shipping.
   - Use Grafana Alloy as the DaemonSet collector — successor to Promtail, ships with OTel pipeline support for future OpenTelemetry convergence.
   - Single Alloy DaemonSet ships to prod Loki only — loki-dev is populated via synthetic data injection for upgrade staging; no alloy-dev DaemonSet.
@@ -20,7 +20,7 @@ resolved_questions:
   - Log retention: dev 7d (upgrade staging, no enforcement), prod 30d. Confirmed.
   - Loki ruler alert rules: in scope for this feature.
   - VM-side log shipping SLA: best-effort accepted — no alert on shipper failure.
-  - Vault audit log durability: best-effort accepted — MinIO on local-path PVC survives pod restarts but not node loss; no zero-loss guarantee.
+  - Vault audit log durability: best-effort accepted — MinIO is NAS-backed (Synology, 10.0.0.2); durability depends on NAS availability, not node lifecycle.
 depends_on:
   - docs/terminus/infra/prometheus-wiring/architecture.md
   - docs/terminus/infra/secrets/architecture.md
@@ -53,7 +53,7 @@ Terminus runs 25+ distinct workload deployments across 24 namespaces on a 9-node
 - VM-side services (Vault, Postgres) emit logs to local disk only. Vault audit logs, which record every secret access, are not inspectable without SSHing into the Vault VM.
 
 **In scope:**
-- MinIO in-cluster deployment (single-instance StatefulSet, `monitoring` namespace, 100Gi local-path PVC), bucket creation, and ESO secret for Loki prod object storage credentials.
+  - Loki S3 credentials setup (Vault KV + ESO ExternalSecret) for Synology-hosted MinIO at `10.0.0.2:9000`, bucket `loki`.
 - Alertmanager deployment in `monitoring` namespace — **already deployed** by `prometheus` feature (complete); no action needed here. This feature adds Loki ruler alert routing via `AlertmanagerConfig` CRD.
 - Loki deployment in `monitoring` namespace; `loki-dev` in `monitoring-dev` for upgrade staging only (populated via synthetic data injection, not real log shipping).
 - Grafana Alloy DaemonSet — scrapes container logs from all namespaces on all nodes; ships to prod Loki only.
@@ -69,7 +69,7 @@ Terminus runs 25+ distinct workload deployments across 24 namespaces on a 9-node
 - SIEM integration (deferred; Loki pipeline is SIEM-compatible per existing docs).
 - Multi-cluster log federation.
 - Log-based SLOs (deferred; metric SLOs are the Prometheus-wiring scope).
-- Long-term cold log archive beyond MinIO in-cluster (e.g., external NAS, glacier-tier, multi-site replication) — MinIO is the prod backend; additional archive tiers are out of scope.
+- Long-term cold log archive beyond what MinIO on the Synology NAS provides — MinIO is the prod backend; additional archive tiers are out of scope.
 
 ---
 
@@ -175,9 +175,9 @@ ArgoCD ServiceMonitor Fix (in-scope, same deploy wave)
 **Deployment:** Helm chart `grafana/loki`, version `6.*`, ArgoCD multi-source app following `prometheus.yaml` pattern.
 
 **Storage:**
-- Prod: MinIO in-cluster S3-compatible object store. Single-instance StatefulSet in `monitoring` namespace, 100Gi `local-path` PVC. Credentials in Vault KV (`secret/terminus/loki/s3-creds`), materialized via ESO into `loki-s3-creds` secret in `monitoring` namespace. Bucket: `terminus-loki-prod`. Endpoint: `http://minio.monitoring.svc.cluster.local:9000`. Retention: 30 days.
+- Prod: Synology-hosted MinIO S3-compatible object store. MinIO runs on the Synology NAS at `10.0.0.2:9000` (external to the cluster). Credentials in Vault KV (`secret/terminus/loki/s3-creds`), materialized via ESO into `loki-s3-creds` secret in `monitoring` namespace. Bucket: `loki`. Endpoint: `http://10.0.0.2:9000`. Retention: 30 days.
 - Dev (`loki-dev`): 20Gi `local-path` PVC — upgrade staging only; no retention enforcement; not a real log ingestion target.
-- Rationale for MinIO over raw local-path for prod: decouples Loki compute from log storage; Loki pod can be rescheduled without data loss (storage stays on the MinIO StatefulSet PVC, which persists across Loki pod restarts). Node-local only — does not survive permanent node loss, which is accepted for homelab scale.
+- Rationale for Synology MinIO: decouples Loki compute from log storage; Loki pod can be rescheduled without data loss; NAS-backed durability (independent of k3s node lifecycle).
 
 **Service:** `loki.monitoring.svc.cluster.local:3100` (ClusterIP, internal only). No external ingress needed.
 
@@ -303,7 +303,7 @@ Following the established multi-source + sync-wave pattern:
 | App Name | Chart | Namespace | Wave | Purpose |
 |----------|-------|-----------|------|---------|
 | `kube-prometheus-stack` (update) | `prometheus-community/kube-prometheus-stack` | `monitoring` | 2 | Enable Alertmanager — update existing app values only |
-| `minio` | `bitnami/minio 14.*` | `monitoring` | 2 | In-cluster S3 object store for Loki prod — 100Gi local-path PVC |
+| *(no minio app)* | — | — | — | MinIO runs externally on Synology NAS (10.0.0.2:9000) — no in-cluster deployment needed |
 | `loki` | `grafana/loki 6.*` | `monitoring` | 3 | Prod Loki backend (MinIO S3 storage) |
 | `loki-dev` | `grafana/loki 6.*` | `monitoring-dev` | 3 | Dev Loki backend (local-path, upgrade staging only) |
 | `alloy` | `grafana/alloy 0.*` | `monitoring` | 4 | Cluster log collector DaemonSet — ships to prod Loki only |
@@ -314,8 +314,6 @@ Wave rationale: Loki must be healthy before Alloy tries to push logs. Both are a
 
 ```
 platforms/k3s/helm/
-├── minio/
-│   └── values.yaml          # MinIO standalone, 100Gi local-path PVC, terminus-loki-prod bucket
 ├── loki/
 │   ├── values.yaml          # prod — MinIO S3 backend, 30d retention
 │   └── values-dev.yaml      # dev — 20Gi local-path PVC, upgrade staging (no real Alloy shipping)
@@ -389,7 +387,7 @@ Delivery: Ansible playbook run from SemaphoreUI (consistent with how Vault and P
 
 ## Loki Configuration Key Decisions
 
-### Storage Mode: `s3` (Synology NAS)
+### Storage Mode: `s3` (Synology-hosted MinIO)
 
 ```yaml
 # loki/values.yaml — key excerpt
@@ -399,12 +397,12 @@ loki:
   storage:
     type: s3
     s3:
-      endpoint: http://minio.monitoring.svc.cluster.local:9000
-      bucketnames: terminus-loki-prod
+      endpoint: http://10.0.0.2:9000
+      bucketnames: loki
       region: us-east-1                # required field; MinIO ignores the value
       access_key_id: ${LOKI_S3_ACCESS_KEY}    # ESO-materialized from Vault
       secret_access_key: ${LOKI_S3_SECRET_KEY}
-      insecure: true                   # MinIO in-cluster HTTP — no TLS needed internally
+      insecure: true                   # Synology MinIO over HTTP — no TLS on NAS
       s3forcepathstyle: true           # required for MinIO path-style access
   schemaConfig:
     configs:
@@ -477,8 +475,8 @@ rulesConfig:
 This feature has a dependency on Prometheus being operational. Loki can be deployed independently, but the ArgoCD ServiceMonitor fix only becomes functional once Prometheus is healthy.
 
 ### Phase 0 — Prerequisites (before any Loki deploy)
-1. Deploy MinIO in `monitoring` namespace: ArgoCD app + values.yaml (100Gi local-path PVC, `defaultBuckets: terminus-loki-prod`, wave 2). Confirm MinIO pod healthy and `terminus-loki-prod` bucket exists.
-2. Store MinIO root credentials in Vault KV (`secret/terminus/loki/s3-creds`), create ExternalSecret to materialize as `loki-s3-creds` in `monitoring` namespace. MinIO `existingSecret` references this secret — ESO must materialize before MinIO pod starts.
+1. Verify Synology MinIO is accessible from the cluster: `curl http://10.0.0.2:9000/minio/health/live` — confirm 200 OK. Verify `loki` bucket exists in MinIO (create via MinIO console at `http://10.0.0.2:9001` if not present).
+2. Store MinIO access credentials in Vault KV (`secret/terminus/loki/s3-creds`), create ExternalSecret to materialize as `loki-s3-creds` in `monitoring` namespace.
 3. Verify Alertmanager is running: `kubectl get pods -n monitoring | grep alertmanager` — deployed by `prometheus` feature (complete). No redeployment needed. Note the Alertmanager service name for Loki ruler `alertmanager_url`.
 
 ### Phase 1 — Loki Backend (after Phase 0 prereqs complete)
@@ -529,7 +527,7 @@ This feature has a dependency on Prometheus being operational. Loki can be deplo
 
 | Concern | Dev (upgrade staging) | Prod |
 |---------|-----------------------|------|
-| Loki storage | 20Gi local-path PVC | MinIO in-cluster S3 (`terminus-loki-prod` bucket, 100Gi local-path PVC) |
+| Loki storage | 20Gi local-path PVC | Synology MinIO S3 (`loki` bucket, `http://10.0.0.2:9000`) |
 | Retention | No enforcement (upgrade staging only) | 30d (`compactor.retention_enabled: true`) |
 | Log ingestion | Synthetic data injection only — no real Alloy shipping | Alloy DaemonSet ships all cluster logs |
 | Ingress hostname | Not exposed (no real push traffic) | `loki-push.trantor.internal` |
@@ -570,24 +568,24 @@ This feature has a dependency on Prometheus being operational. Loki can be deplo
 
 ---
 
-## ADR-004: MinIO In-Cluster as Loki Prod Object Storage
+## ADR-004: Synology-Hosted MinIO as Loki Prod Object Storage
 
-**Status:** Decided (revised 2026-04-23 — Synology NAS S3 not available on DS1618+ hardware)
+**Status:** Decided (2026-04-23)
 
-**Context:** Need S3-compatible object storage for Loki prod log backend. Synology NAS S3 API was the original decision but is not supported on the DS1618+ hardware model.
+**Context:** Need S3-compatible object storage for Loki prod log backend. Synology DS1618+ does not support the Synology S3 Server package. However, MinIO is installable directly on the Synology as a Docker container or package, and is confirmed running at `10.0.0.2:9000`.
 
-**Decision:** MinIO in-cluster (single-instance StatefulSet, `monitoring` namespace, `bitnami/minio` Helm chart).
+**Decision:** Synology-hosted MinIO (`http://10.0.0.2:9000`), bucket `loki`. External to the k3s cluster.
 
 **Rationale:**
-- Synology DS1618+ does not support the S3-compatible API (requires the S3 Server package available only on specific DiskStation models). Not viable.
-- MinIO is the de-facto open-source S3-compatible object store for self-hosted k8s environments. Well-maintained `bitnami/minio` chart with ArgoCD multi-source support.
-- Decouples Loki pod lifecycle from log storage: Loki pod can be rescheduled/restarted without data loss; storage persists on the MinIO StatefulSet PVC independently.
-- Consistent with existing GitOps delivery pattern: ArgoCD multi-source app, `local-path` PVC, credentials in Vault + ESO.
-- No external hardware dependency — entirely in-cluster.
+- MinIO is confirmed running and accessible on the Synology NAS at `10.0.0.2:9000`.
+- Decouples Loki pod lifecycle from log storage — Loki pod can be rescheduled/restarted without data loss; storage is on NAS hardware independent of any k3s node.
+- NAS-backed storage survives k3s node loss entirely (unlike `local-path` PVC).
+- No additional in-cluster deployment needed — one fewer ArgoCD app to manage.
+- Consistent with credentials pattern: Vault KV → ESO → Kubernetes Secret.
 
-**Accepted trade-off:** `local-path` PVC is node-local. MinIO data does not survive permanent loss of the node hosting the PVC. This is the same failure mode as Prometheus TSDB and is accepted for homelab scale. Mitigation: 30d retention means data age is bounded; no long-term cold archive requirement.
+**Accepted trade-off:** Loki prod depends on NAS availability. If the Synology is down, Loki ingest fails (Alloy buffers briefly). NAS is on the same homelab network — acceptable availability trade-off.
 
-**Consequences:** Prod Loki depends on MinIO pod availability. If MinIO is down, Loki ingest fails (Alloy buffers briefly). MinIO adds one more pod to the `monitoring` namespace (minimal resource footprint: 100m CPU / 256Mi memory request).
+**Consequences:** E1-S1 simplifies to Vault credentials + ESO ExternalSecret only (no in-cluster MinIO deploy). Loki S3 endpoint is `http://10.0.0.2:9000` (plain HTTP, no TLS on NAS).
 
 ---
 
