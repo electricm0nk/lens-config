@@ -21,10 +21,10 @@ The architecture is sound and well-scoped. Two critical findings (double-ship Da
 
 | # | Dimension | Finding | Resolution |
 |---|-----------|---------|------------|
-| H1 | Logic Flaws | Alertmanager is target of Loki ruler alerts but was never deployed. No delivery path for any alert rule. | **Resolved** — Alertmanager deployment added to feature scope. Enabled via existing kube-prometheus-stack Helm values in Phase 0. Architecture updated. |
+| H1 | Logic Flaws | Alertmanager is target of Loki ruler alerts but was never deployed. No delivery path for any alert rule. | **Resolved** — Alertmanager is already deployed by `prometheus` feature (complete) with `alertmanager.enabled: true` but no routes. This feature adds Loki ruler alert routing via `AlertmanagerConfig` CRD in Phase 6; coordination with `prometheus-wiring` required. Architecture updated (2026-04-23). |
 | H2 | Coverage Gaps | VM Alloy routing: `loki-push-dev.trantor.internal` vs `loki-push.trantor.internal` split requires two Alloy configs per VM with no documented purpose. | **Resolved** — VMs ship to prod Loki only via `loki-push.trantor.internal`. `*.trantor.internal` wildcard DNS resolves to `10.0.0.126`. Single ingress route needed. Architecture updated. |
 | H3 | Coverage Gaps | `local-path` PVC for prod Loki: node failure = up to 30 days of log data loss. No RTO/RPO documented. Vault audit logs at risk. | **Resolved** — scope expanded. Prod Loki uses Synology NAS S3 backend. Remaining risk (Synology is single device, no HA) explicitly accepted. See Accepted Risks. Architecture updated. |
-| H4 | Complexity / Risk | Prometheus CrashLoopBackOff blocks ArgoCD ServiceMonitor fix and Alertmanager. No tracked owner. | **Resolved** — Prometheus CrashLoopBackOff confirmed fixed. Alertmanager deployment added to this feature's scope as Phase 0 pre-condition. |
+| H4 | Complexity / Risk | Prometheus CrashLoopBackOff blocks ArgoCD ServiceMonitor fix and Alertmanager. No tracked owner. | **Resolved** — Prometheus CrashLoopBackOff confirmed fixed. Alertmanager already deployed by `prometheus` (complete); Phase 6 adds routing config via `AlertmanagerConfig` CRD, not a redeployment. |
 | H5 | Cross-Feature | `prometheus-wiring` (finalizeplan-complete) defines Alertmanager routing. Loki ruler alerts may be silently dropped if no route matches. | **Open — tracked.** Phase 6 step 2 explicitly requires coordination with `prometheus-wiring` Alertmanager routing config before enabling ruler alerts. |
 | H6 | Assumptions | Alloy `loki.source.kubernetes_logs` compatibility with containerd 2.0.4 on Ubuntu 24.04 not verified. | **Open — tracked.** Added as Phase 2 verification step. Risk is low (Alloy 1.x is tested against containerd 2.x) but must be confirmed during deploy. |
 
@@ -63,7 +63,7 @@ The architecture is sound and well-scoped. Two critical findings (double-ship Da
 
 **Blind-spot challenge questions asked and answered:**
 1. `alloy-dev` purpose → eliminated ✓
-2. Alertmanager health → Prometheus fixed; Alertmanager added to scope ✓
+2. Alertmanager health → Prometheus fixed; Alertmanager already deployed by `prometheus` (complete); Loki alert routing via `AlertmanagerConfig` CRD added in Phase 6 ✓
 3. Vault audit log compliance posture → best-effort explicitly accepted ✓
 4. `compactor.retention_enabled` → added to values ✓
 5. VM Alloy routing → prod Loki only; wildcard DNS confirmed ✓

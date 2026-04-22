@@ -12,11 +12,9 @@ key_decisions:
   - Ship VM-side logs (Vault audit, Postgres JSON) via a lightweight Alloy service installation on each VM host (best-effort; no alert on shipper failure).
   - Add Loki as a Grafana datasource via the existing sidecar-managed datasource ConfigMap pattern.
   - Deploy Loki, Alloy, and Alertmanager via ArgoCD multi-source Helm apps following the existing prometheus/influxdb pattern.
-  - Deploy Alertmanager in-scope — never previously installed; required for Loki ruler and Prometheus alert delivery.
-  - Fix ArgoCD ServiceMonitor gap in-scope — missing metrics feed is the highest-priority observability gap.
-  - Use Loki native rulesConfig (Helm values inline) for ruler alert rules — no PrometheusRule CRDs; ruler reads from local directory populated by Helm.
+  - Alertmanager is already deployed by the `prometheus` feature (complete) with `alertmanager.enabled: true` but no routes. This feature adds a Loki ruler alert route via `AlertmanagerConfig` CRD — no redeployment needed.
+  - Coordinate Loki ruler alert routing with `prometheus-wiring` (finalizeplan-complete) to avoid config conflicts.
   - Store Loki auth and any tenant credentials in Vault, materialized via ESO — no secrets in git.
-open_questions:
   - Should Loki use single-binary (SimpleScalable) or microservices mode? Single-binary recommended for current cluster size; re-evaluate at >10TB/day ingest.
 resolved_questions:
   - Log retention: dev 7d (upgrade staging, no enforcement), prod 30d. Confirmed.
@@ -31,7 +29,7 @@ blocks:
   - ArgoCD alert rules (ArgoCDAppDegraded, ArgoCDSyncFailureRateHigh) — currently have no data source
   - Vault audit trail centralization
   - Postgres query error analysis
-updated_at: 2026-04-22T18:00:00Z
+updated_at: 2026-04-23T00:00:00Z
 stepsCompleted: [1]
 inputDocuments:
   - prometheus-wiring/docs/architecture.md
@@ -56,7 +54,7 @@ Terminus runs 25+ distinct workload deployments across 24 namespaces on a 9-node
 
 **In scope:**
 - Synology NAS S3 bucket configuration and ESO secret for Loki prod object storage credentials.
-- Alertmanager deployment in `monitoring` namespace — enable via kube-prometheus-stack Helm values; never previously installed; required delivery path for all alert rules.
+- Alertmanager deployment in `monitoring` namespace — **already deployed** by `prometheus` feature (complete); no action needed here. This feature adds Loki ruler alert routing via `AlertmanagerConfig` CRD.
 - Loki deployment in `monitoring` namespace; `loki-dev` in `monitoring-dev` for upgrade staging only (populated via synthetic data injection, not real log shipping).
 - Grafana Alloy DaemonSet — scrapes container logs from all namespaces on all nodes; ships to prod Loki only.
 - Loki datasource added to Grafana (prod and dev).
@@ -81,7 +79,7 @@ Terminus runs 25+ distinct workload deployments across 24 namespaces on a 9-node
 
 | Component | State | Notes |
 |-----------|-------|-------|
-| kube-prometheus-stack | Deployed; Prometheus CrashLoopBackOff resolved; Alertmanager not yet installed | Alertmanager deployment is in scope for this feature |
+| kube-prometheus-stack | Deployed; Prometheus CrashLoopBackOff resolved; Alertmanager deployed (no routes) | Alertmanager routing for Loki ruler alerts added in Phase 6 via AlertmanagerConfig CRD |
 | Grafana (prod + dev) | Healthy | InfluxDB + Prometheus datasources; no Loki datasource |
 | InfluxDB (prod + dev) | Healthy | Metrics backend for dashboards |
 | ArgoCD | Healthy (all pods running) | No ServiceMonitor; logs to stdout only |
@@ -477,8 +475,7 @@ This feature has a dependency on Prometheus being operational. Loki can be deplo
 ### Phase 0 — Prerequisites (before any Loki deploy)
 1. Configure Synology NAS S3-compatible API: create bucket `terminus-loki-prod`, create service account, confirm endpoint hostname (`nas.trantor.internal` or equivalent).
 2. Store S3 credentials in Vault KV (`secret/terminus/loki/s3-creds`), create ExternalSecret to materialize as `loki-s3-creds` in `monitoring` namespace.
-3. Update `platforms/k3s/helm/kube-prometheus-stack/values.yaml` to enable Alertmanager (`alertmanager.enabled: true`). Add minimal Alertmanager config — a catch-all route is sufficient for Phase 0.
-4. Sync `kube-prometheus-stack` ArgoCD app — verify Alertmanager pod healthy. Note service name for Loki ruler `alertmanager_url`.
+3. Verify Alertmanager is running: `kubectl get pods -n monitoring | grep alertmanager` — deployed by `prometheus` feature (complete). No redeployment needed. Note the Alertmanager service name for Loki ruler `alertmanager_url`.
 
 ### Phase 1 — Loki Backend (after Phase 0 prereqs complete)
 1. Add `platforms/k3s/helm/loki/values.yaml` (prod — S3/Synology backend, 30d retention) and `values-dev.yaml` (dev — local-path, upgrade staging)
@@ -515,8 +512,8 @@ This feature has a dependency on Prometheus being operational. Loki can be deplo
 6. Verify Postgres log stream in Grafana
 
 ### Phase 6 — Loki Ruler Alert Rules
-1. Add `loki.rulesConfig` block to `platforms/k3s/helm/loki/values.yaml` with inline rule groups (CrashLoopDetected, OOMKillDetected, VaultAuditDeny, TemporalWorkflowPanic, ArgoCDSyncError).
-2. Ensure Alertmanager config (from Phase 0) has a receiver route for Loki ruler alerts. Coordinate with `prometheus-wiring` Alertmanager routing config.
+1. Add `loki.rulesConfig` block to `platforms/k3s/helm/loki/values.yaml` with inline rule groups.
+2. Add `AlertmanagerConfig` CRD to `platforms/k3s/k8s/monitoring/loki-alertmanager-config.yaml` for Loki ruler receiver routing. Coordinate with `prometheus-wiring` feature: the Alertmanager config owned by `prometheus-wiring` must not conflict with this route. If `prometheus-wiring` is not yet in dev, add a minimal catch-all route here and plan to migrate to the full `prometheus-wiring` routing config when it ships.
 3. Sync `loki` ArgoCD app — Helm populates the local rules directory; ruler loads rules automatically.
 4. Verify rules visible in Loki ruler API (`/loki/api/v1/rules`).
 5. Verify alerts route to Alertmanager (check Alertmanager active alerts UI or API).
