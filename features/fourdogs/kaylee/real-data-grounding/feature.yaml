@@ -54,3 +54,6 @@ phase_transitions:
 - phase: dev-ready
   timestamp: '2026-04-23T00:00:00Z'
   user: Todd Hintzmann
+docs:
+  path: docs/fourdogs/kaylee/real-data-grounding
+  governance_docs_path: null
