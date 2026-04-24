@@ -31,5 +31,5 @@ phase_transitions:
   user: Todd Hintzmann
 docs:
   path: docs/fourdogs/central/foundation
-  governance_docs_path: features/fourdogs/central/foundation/docs
+  governance_docs_path: null
 migrated_from: fourdogs-central-foundation

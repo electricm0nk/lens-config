@@ -31,5 +31,5 @@ phase_transitions:
   user: Todd Hintzmann
 docs:
   path: docs/fourdogs/prototype/loader
-  governance_docs_path: features/fourdogs/prototype/loader/docs
+  governance_docs_path: null
 migrated_from: fourdogs-prototype-loader

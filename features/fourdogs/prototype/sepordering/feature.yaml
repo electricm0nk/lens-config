@@ -31,5 +31,5 @@ phase_transitions:
   user: Todd Hintzmann
 docs:
   path: docs/fourdogs/prototype/sepordering
-  governance_docs_path: features/fourdogs/prototype/sepordering/docs
+  governance_docs_path: null
 migrated_from: fourdogs-prototype-sepordering

@@ -58,4 +58,4 @@ phase_transitions:
   user: Todd Hintzmann
 docs:
   path: docs/terminus/infra/prometheus-wiring
-  governance_docs_path: features/terminus/infra/prometheus-wiring/docs
+  governance_docs_path: null

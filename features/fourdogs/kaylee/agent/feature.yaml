@@ -31,5 +31,5 @@ phase_transitions:
   user: Todd Hintzmann
 docs:
   path: docs/fourdogs/kaylee/agent
-  governance_docs_path: features/fourdogs/kaylee/agent/docs
+  governance_docs_path: null
 migrated_from: fourdogs-kaylee-agent

@@ -31,5 +31,5 @@ phase_transitions:
   user: Todd Hintzmann
 docs:
   path: docs/agent/terminus/weather
-  governance_docs_path: features/agent/terminus/weather/docs
+  governance_docs_path: null
 migrated_from: agent-terminus-weather

@@ -31,5 +31,5 @@ phase_transitions:
   user: Todd Hintzmann
 docs:
   path: docs/terminus/infra/semaphoreui
-  governance_docs_path: features/terminus/infra/semaphoreui/docs
+  governance_docs_path: null
 migrated_from: terminus-infra-semaphoreui

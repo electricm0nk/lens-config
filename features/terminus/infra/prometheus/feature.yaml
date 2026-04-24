@@ -57,5 +57,5 @@ phase_transitions:
   note: PR
 docs:
   path: docs/terminus/infra/prometheus
-  governance_docs_path: features/terminus/infra/prometheus/docs
+  governance_docs_path: null
 completed_at: '2026-04-16T18:02:36Z'

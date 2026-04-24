@@ -45,4 +45,4 @@ phase_transitions:
   user: Todd Hintzmann
 docs:
   path: docs/fourdogs/etailpet-api/transactions
-  governance_docs_path: features/fourdogs/etailpet-api/transactions/docs
+  governance_docs_path: null

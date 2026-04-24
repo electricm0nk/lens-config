@@ -31,5 +31,5 @@ phase_transitions:
   user: Todd Hintzmann
 docs:
   path: docs/terminus/inference/provider-routing
-  governance_docs_path: features/terminus/inference/provider-routing/docs
+  governance_docs_path: null
 migrated_from: terminus-inference-provider-routing

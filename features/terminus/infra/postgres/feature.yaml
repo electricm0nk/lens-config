@@ -31,5 +31,5 @@ phase_transitions:
   user: Todd Hintzmann
 docs:
   path: docs/terminus/infra/postgres
-  governance_docs_path: features/terminus/infra/postgres/docs
+  governance_docs_path: null
 migrated_from: terminus-infra-postgres

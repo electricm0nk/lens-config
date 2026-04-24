@@ -31,5 +31,5 @@ phase_transitions:
   user: Todd Hintzmann
 docs:
   path: docs/terminus/portal/portal2
-  governance_docs_path: features/terminus/portal/portal2/docs
+  governance_docs_path: null
 migrated_from: terminus-portal-portal2

@@ -31,5 +31,5 @@ phase_transitions:
   user: Todd Hintzmann
 docs:
   path: docs/agent/terminus/gmail
-  governance_docs_path: features/agent/terminus/gmail/docs
+  governance_docs_path: null
 migrated_from: agent-terminus-gmail

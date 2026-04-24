@@ -31,5 +31,5 @@ phase_transitions:
   user: Todd Hintzmann
 docs:
   path: docs/terminus/platform/grafana
-  governance_docs_path: features/terminus/platform/grafana/docs
+  governance_docs_path: null
 migrated_from: terminus-platform-grafana

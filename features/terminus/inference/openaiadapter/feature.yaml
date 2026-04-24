@@ -31,5 +31,5 @@ phase_transitions:
   user: Todd Hintzmann
 docs:
   path: docs/terminus/inference/openaiadapter
-  governance_docs_path: features/terminus/inference/openaiadapter/docs
+  governance_docs_path: null
 migrated_from: terminus-inference-openaiadapter

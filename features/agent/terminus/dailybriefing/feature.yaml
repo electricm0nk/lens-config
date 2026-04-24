@@ -31,5 +31,5 @@ phase_transitions:
   user: Todd
 docs:
   path: docs/agent/terminus/dailybriefing
-  governance_docs_path: features/agent/terminus/dailybriefing/docs
+  governance_docs_path: null
 migrated_from: agent-terminus-dailybriefing

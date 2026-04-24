@@ -43,4 +43,4 @@ phase_transitions:
   user: Todd
 docs:
   path: docs/terminus/infra/proxmox-vm-boot-order
-  governance_docs_path: features/terminus/infra/proxmox-vm-boot-order/docs
+  governance_docs_path: null

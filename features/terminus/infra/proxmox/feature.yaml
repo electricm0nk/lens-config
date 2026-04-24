@@ -31,5 +31,5 @@ phase_transitions:
   user: Todd Hintzmann
 docs:
   path: docs/terminus/infra/proxmox
-  governance_docs_path: features/terminus/infra/proxmox/docs
+  governance_docs_path: null
 migrated_from: terminus-infra-proxmox

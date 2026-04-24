@@ -40,4 +40,4 @@ phase_transitions:
   user: electrikm0nk
 docs:
   path: docs/terminus/infra/k3s-startup-sequence
-  governance_docs_path: features/terminus/infra/k3s-startup-sequence/docs
+  governance_docs_path: null

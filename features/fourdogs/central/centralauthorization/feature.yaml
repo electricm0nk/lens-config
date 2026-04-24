@@ -31,5 +31,5 @@ phase_transitions:
   user: Todd Hintzmann
 docs:
   path: docs/fourdogs/central/centralauthorization
-  governance_docs_path: features/fourdogs/central/centralauthorization/docs
+  governance_docs_path: null
 migrated_from: fourdogs-central-centralauthorization

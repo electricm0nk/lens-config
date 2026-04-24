@@ -46,4 +46,4 @@ phase_transitions:
   user: electricm0nk
 docs:
   path: docs/terminus/infra/terminus-infra-centralized-logging
-  governance_docs_path: features/terminus/infra/terminus-infra-centralized-logging/docs
+  governance_docs_path: null

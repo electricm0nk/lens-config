@@ -31,5 +31,5 @@ phase_transitions:
   user: Todd Hintzmann
 docs:
   path: docs/fourdogs/central/centralui50
-  governance_docs_path: features/fourdogs/central/centralui50/docs
+  governance_docs_path: null
 migrated_from: fourdogs-central-centralui50

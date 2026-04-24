@@ -31,5 +31,5 @@ phase_transitions:
   user: Todd Hintzmann
 docs:
   path: docs/terminus/portal/https-fqdn-fix
-  governance_docs_path: features/terminus/portal/https-fqdn-fix/docs
+  governance_docs_path: null
 migrated_from: terminus-portal-https-fqdn-fix

@@ -40,5 +40,5 @@ phase_transitions:
   user: Todd Hintzmann
 docs:
   path: docs/fourdogs/central/uifix2
-  governance_docs_path: features/fourdogs/central/uifix2/docs
+  governance_docs_path: null
 completed_at: '2026-04-20T17:23:41Z'

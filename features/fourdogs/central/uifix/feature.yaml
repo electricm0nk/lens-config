@@ -31,5 +31,5 @@ phase_transitions:
   user: Todd Hintzmann
 docs:
   path: docs/fourdogs/central/uifix
-  governance_docs_path: features/fourdogs/central/uifix/docs
+  governance_docs_path: null
 migrated_from: fourdogs-central-uifix
