@@ -4,12 +4,12 @@ featureId: terminus-infra-gpu-passthrough
 featureSlug: gpu-passthrough
 domain: terminus
 service: infra
-phase: techplan
+phase: finalizeplan-complete
 track: tech-change
 milestones:
   businessplan: null
-  techplan: null
-  finalizeplan: null
+  techplan: '2026-04-25T18:02:34Z'
+  finalizeplan: '2026-04-26T00:00:00Z'
   dev-ready: null
   dev-complete: null
 team:
@@ -22,13 +22,19 @@ target_repos: []
 links:
   retrospective: null
   issues: []
-  pull_request: null
+  pull_request: 'https://github.com/electricm0nk/bmad.lens.projects/pull/190'
 priority: medium
 created: '2026-04-25T17:33:02Z'
-updated: '2026-04-25T17:33:02Z'
+updated: '2026-04-26T00:00:00Z'
 phase_transitions:
 - phase: techplan
   timestamp: '2026-04-25T17:33:02Z'
+  user: Todd Hintzmann
+- phase: techplan-complete
+  timestamp: '2026-04-25T18:02:34Z'
+  user: Todd Hintzmann
+- phase: finalizeplan-complete
+  timestamp: '2026-04-26T00:00:00Z'
   user: Todd Hintzmann
 docs:
   path: docs/terminus/infra/terminus-infra-gpu-passthrough
