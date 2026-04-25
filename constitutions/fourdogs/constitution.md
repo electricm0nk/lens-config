@@ -114,14 +114,16 @@ All `fourdogs` HTTP APIs must include and maintain machine-readable Swagger/Open
 Definitions:
 
 - API route: any HTTP endpoint implemented by fourdogs services
-- externally consumed route: any route not explicitly internal (for example `/internal/*`) and intended for UI/operator/service consumers
 - externally consumed route: any route not matching `/internal/*`, `/health*`, or `/metrics*`, and not explicitly marked internal-only in service docs
 
 Minimum expectation:
 
 - each externally consumed API route is represented in OpenAPI/Swagger
-- request/response and error envelopes are documented for each route
+- request, response, and error envelopes are documented for each route; minimum coverage includes all intentionally returned HTTP status codes for the route and example response bodies for common 4xx/5xx cases
 - route contract changes include OpenAPI/Swagger updates in the same change set
+- Swagger UI must be available and fully rendered in at least one of:
+  - a non-production environment (`dev`, `staging`, or `test`) accessible by the development team, or
+  - an authenticated internal path with an explicit approval record linked from the service OpenAPI source
 
 Specification requirement:
 
@@ -129,12 +131,24 @@ Specification requirement:
   - `api/openapi.yaml`, or
   - `docs/api.openapi.yaml`
   - `docs/api/<service-name>.openapi.yaml`
+- when multiple OpenAPI files exist, the service README or build configuration must declare the canonical source
+- Swagger UI must render from the maintained OpenAPI source and stay in sync with the same route contract changes
+- when an authenticated internal Swagger UI path is used, the service OpenAPI source must include an approval reference via `x-swagger-ui-path-approval: <https://...>`
+
+Acceptance criteria:
+
+- versioned APIs must either maintain version-specific OpenAPI documents or a single multi-version spec with version-specific differences documented
+- deprecated routes must be marked deprecated in the OpenAPI definition before code removal
+- Swagger UI usability means the UI loads, renders documented operations, and supports direct request execution for safe routes or for authorized users in the intended environment
+- approval is required only for the authenticated internal-path option; non-production Swagger UI does not require a separate approval record
 
 Audit and ownership:
 
 - service PR reviewer verifies route-to-spec parity for changed endpoints
+- service PR reviewer verifies Swagger UI remains reachable and usable for changed APIs in the intended non-production or internal environment
 - CI must include OpenAPI validation/lint checks (for example Spectral) and fail on missing or invalid spec updates
 - merge to `develop` is blocked when API contract changes are not documented
+- unresolved FD-3 review blocks must be escalated to the domain owner after 5 business days
 
 ## Exception Handling
 
