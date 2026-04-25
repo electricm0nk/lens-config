@@ -663,15 +663,15 @@ features:
     related: []
   updated_at: '2026-04-25T14:12:00Z'
   summary: ''
-- id: terminus-infra-gpu-passthrough
-  featureId: terminus-infra-gpu-passthrough
+- id: gpu-passthrough
+  featureId: gpu-passthrough
   featureSlug: gpu-passthrough
   domain: terminus
   service: infra
   track: tech-change
   status: techplan
   owner: Todd Hintzmann
-  plan_branch: terminus-infra-gpu-passthrough-plan
+  plan_branch: gpu-passthrough-plan
   related_features:
     depends_on: []
     blocks: []

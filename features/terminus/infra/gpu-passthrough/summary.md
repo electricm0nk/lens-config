@@ -1,6 +1,6 @@
 # GPU Passthrough
 
-> Status: techplan | Feature ID: `terminus-infra-gpu-passthrough`
+> Status: techplan | Feature ID: `gpu-passthrough`
 
 Auto-generated stub. Update as planning progresses.
 

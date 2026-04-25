@@ -1,6 +1,6 @@
 name: GPU Passthrough
 description: ''
-featureId: terminus-infra-gpu-passthrough
+featureId: gpu-passthrough
 featureSlug: gpu-passthrough
 domain: terminus
 service: infra
@@ -45,5 +45,5 @@ phase_transitions:
   timestamp: '2026-04-26T01:00:00Z'
   user: conductor
 docs:
-  path: docs/terminus/infra/terminus-infra-gpu-passthrough
-  governance_docs_path: features/terminus/infra/terminus-infra-gpu-passthrough/docs
+  path: docs/terminus/infra/gpu-passthrough
+  governance_docs_path: features/terminus/infra/gpu-passthrough/docs

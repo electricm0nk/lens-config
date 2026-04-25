@@ -1,5 +1,5 @@
 ---
-feature: terminus-infra-gpu-passthrough
+feature: gpu-passthrough
 doc_type: architecture
 status: draft
 goal: "Pass through the Gigabyte RTX 3090 Turbo from Proxmox into a dedicated k3s worker VM so the live inference gateway can route inference workloads to local GPU capacity"
@@ -23,7 +23,7 @@ updated_at: "2026-04-25T00:00:00Z"
 
 # Architecture Decision Document - GPU Passthrough to k3s
 
-Feature: terminus-infra-gpu-passthrough  
+Feature: gpu-passthrough  
 Track: tech-change  
 Domain: terminus/infra
 

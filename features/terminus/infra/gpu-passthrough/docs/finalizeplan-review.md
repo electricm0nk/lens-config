@@ -1,5 +1,5 @@
 ---
-feature: terminus-infra-gpu-passthrough
+feature: gpu-passthrough
 doc_type: finalizeplan-review
 phase: finalizeplan
 source: phase-complete
@@ -12,7 +12,7 @@ updated_at: "2026-04-25T00:00:00Z"
 
 # FinalizePlan Review — GPU Passthrough to k3s
 
-Feature: terminus-infra-gpu-passthrough  
+Feature: gpu-passthrough  
 Phase: finalizeplan  
 Track: tech-change  
 Verdict: pass-with-warnings

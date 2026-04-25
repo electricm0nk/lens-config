@@ -1,5 +1,5 @@
 ---
-feature: terminus-infra-gpu-passthrough
+feature: gpu-passthrough
 doc_type: stories
 status: draft
 goal: "User stories for GPU passthrough implementation"
@@ -9,9 +9,9 @@ depends_on:
 updated_at: "2026-04-25T00:00:00Z"
 ---
 
-# Story List — terminus-infra-gpu-passthrough
+# Story List — gpu-passthrough
 
-Feature: terminus-infra-gpu-passthrough  
+Feature: gpu-passthrough  
 Track: tech-change  
 Domain: terminus/infra
 
@@ -26,7 +26,7 @@ Domain: terminus/infra
 **So that** the IOMMU isolation gate (ADR-2 / F-1) is satisfied before any provisioning begins
 
 **Acceptance Criteria:**
-- [ ] Target Proxmox node identified and recorded in `docs/terminus/infra/terminus-infra-gpu-passthrough/iommu-evidence.txt`
+- [ ] Target Proxmox node identified and recorded in `docs/terminus/infra/gpu-passthrough/iommu-evidence.txt`
 - [ ] PCI address for RTX 3090 Turbo confirmed and recorded
 - [ ] Full IOMMU group listing for the GPU PCI slot captured and committed
 - [ ] IOMMU group does NOT include critical host devices (NIC, storage controller); if it does, this story is blocked and must be escalated before Epic 2 begins

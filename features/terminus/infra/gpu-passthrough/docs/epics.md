@@ -1,5 +1,5 @@
 ---
-feature: terminus-infra-gpu-passthrough
+feature: gpu-passthrough
 doc_type: epics
 status: draft
 goal: "Break GPU passthrough k3s architecture into delivery epics"
@@ -14,9 +14,9 @@ depends_on:
 updated_at: "2026-04-25T00:00:00Z"
 ---
 
-# Epic List — terminus-infra-gpu-passthrough
+# Epic List — gpu-passthrough
 
-Feature: terminus-infra-gpu-passthrough  
+Feature: gpu-passthrough  
 Track: tech-change  
 Domain: terminus/infra
 

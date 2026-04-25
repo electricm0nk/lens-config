@@ -1,5 +1,5 @@
 ---
-feature: terminus-infra-gpu-passthrough
+feature: gpu-passthrough
 doc_type: implementation-readiness
 status: draft
 goal: "Readiness assessment before implementation begins"
@@ -11,9 +11,9 @@ depends_on:
 updated_at: "2026-04-25T00:00:00Z"
 ---
 
-# Implementation Readiness Report — terminus-infra-gpu-passthrough
+# Implementation Readiness Report — gpu-passthrough
 
-Feature: terminus-infra-gpu-passthrough  
+Feature: gpu-passthrough  
 Track: tech-change  
 Domain: terminus/infra  
 Assessment Date: 2026-04-25

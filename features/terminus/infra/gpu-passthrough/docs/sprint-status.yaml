@@ -1,5 +1,5 @@
 sprint_number: 1
-feature: terminus-infra-gpu-passthrough
+feature: gpu-passthrough
 track: tech-change
 status: planning
 total_points: 38
