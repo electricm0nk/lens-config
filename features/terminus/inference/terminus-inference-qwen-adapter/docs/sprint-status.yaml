@@ -1,0 +1,130 @@
+feature: terminus-inference-qwen-adapter
+track: express
+generated_at: '2026-04-26T14:55:00Z'
+total_points: 55
+total_stories: 11
+
+sprints:
+  - sprint: 1
+    name: Warmup Core
+    goal: "Implement warmup script, ollama persistence config, and container entrypoint"
+    start_date: null
+    end_date: null
+    points: 18
+    stories:
+      - id: S1
+        title: Warmup Script
+        points: 8
+        status: not-started
+        epic: E1
+        assignee: null
+        notes: "Add VRAM ≥24GB check; fail-fast single attempt (300s timeout)"
+      - id: S2
+        title: Ollama Persistence Config
+        points: 5
+        status: not-started
+        epic: E1
+        assignee: null
+        notes: "OLLAMA_KEEP_ALIVE=0, OLLAMA_MODELS=/models; use OLLAMA_MODEL env var (not hard-coded tag)"
+      - id: S3
+        title: Container Entrypoint
+        points: 5
+        status: not-started
+        epic: E1
+        assignee: null
+        notes: "Start ollama in background, run warmup blocking, then start agent"
+        depends_on: [S1, S2]
+
+  - sprint: 2
+    name: Kubernetes Integration
+    goal: "Wire warmup lifecycle into K8s probes, health endpoints, model cache PVC, unit tests, and Prometheus/Loki observability"
+    start_date: null
+    end_date: null
+    points: 26
+    stories:
+      - id: S4
+        title: Readiness Probe
+        points: 5
+        status: not-started
+        epic: E2
+        assignee: null
+        notes: "initialDelaySeconds: 60, periodSeconds: 10, failureThreshold: 30 (360s total window)"
+        depends_on: [S3]
+      - id: S5
+        title: Liveness Probe
+        points: 3
+        status: not-started
+        epic: E2
+        assignee: null
+        notes: "Checks ollama /api/tags; initialDelaySeconds: 30"
+        depends_on: [S3]
+      - id: S6
+        title: Health Endpoints
+        points: 5
+        status: not-started
+        epic: E2
+        assignee: null
+        notes: "/health returns 200+alive; /health/ready returns 200 if warmup.ready exists AND model in ollama, else 503"
+        depends_on: [S3]
+      - id: S7
+        title: Model Cache Volume
+        points: 3
+        status: not-started
+        epic: E2
+        assignee: null
+        notes: "PVC 25GB ReadWriteOnce at /models; confirm StorageClass before story start"
+        depends_on: [S3]
+      - id: S8
+        title: Unit Tests
+        points: 5
+        status: not-started
+        epic: E2
+        assignee: null
+        notes: "pytest + mock; test wait/pull/test/main flows; verify exit codes"
+        depends_on: [S1]
+      - id: S11
+        title: Prometheus and Loki Observability Wiring
+        points: 5
+        status: not-started
+        epic: E2
+        assignee: null
+        notes: >-
+          /metrics endpoint (6 metrics), ServiceMonitor (release: prometheus), PrometheusRule
+          (QwenAdapterWarmupSlow >300s + QwenAdapterWarmupFailed), pod label app.kubernetes.io/name: qwen-adapter for Loki stream.
+        depends_on: [S3]
+
+  - sprint: 3
+    name: Validation & Production
+    goal: "Integration test in dev environment; production readiness checklist"
+    start_date: null
+    end_date: null
+    points: 11
+    stories:
+      - id: S9
+        title: Integration Test
+        points: 8
+        status: not-started
+        epic: E3
+        assignee: null
+        notes: >
+          Deploy to dev; verify pod startup, warmup <5 min, first request <2s (pod-boundary),
+          model persistence >60 min, Prometheus metrics flowing.
+          Add alert rule: startup_warmup_duration_seconds > 300.
+        depends_on: [S4, S5, S6, S7, S8, S11]
+      - id: S10
+        title: Production Checklist
+        points: 3
+        status: not-started
+        epic: E3
+        assignee: null
+        notes: "Resource limits, monitoring alert, runbook, rollback plan, load test"
+        depends_on: [S9]
+
+summary:
+  sprint_1_points: 18
+  sprint_2_points: 26
+  sprint_3_points: 11
+  not_started: 11
+  in_progress: 0
+  complete: 0
+  blocked: 0
