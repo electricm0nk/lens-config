@@ -1,0 +1,35 @@
+name: Qwen Adapter Container Warmup
+description: ''
+featureId: terminus-inference-qwen-adapter
+featureSlug: qwen-adapter
+domain: terminus
+service: inference
+phase: businessplan
+track: quickplan
+milestones:
+  businessplan: null
+  techplan: null
+  finalizeplan: null
+  dev-ready: null
+  dev-complete: null
+team:
+- username: Todd Hintzmann
+  role: lead
+dependencies:
+  depends_on: []
+  depended_by: []
+target_repos: []
+links:
+  retrospective: null
+  issues: []
+  pull_request: null
+priority: medium
+created: '2026-04-26T13:46:33Z'
+updated: '2026-04-26T13:46:33Z'
+phase_transitions:
+- phase: businessplan
+  timestamp: '2026-04-26T13:46:33Z'
+  user: Todd Hintzmann
+docs:
+  path: docs/terminus/inference/terminus-inference-qwen-adapter
+  governance_docs_path: features/terminus/inference/terminus-inference-qwen-adapter/docs
