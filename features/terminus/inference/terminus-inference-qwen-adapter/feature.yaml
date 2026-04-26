@@ -11,7 +11,7 @@ milestones:
   techplan: null
   finalizeplan: '2026-04-26T15:15:00Z'
   dev-ready: '2026-04-26T16:00:00Z'
-  dev-complete: null
+  dev-complete: '2026-04-26T20:00:00Z'
 team:
 - username: Todd Hintzmann
   role: lead
@@ -26,7 +26,7 @@ target_repos:
 links:
   retrospective: null
   issues: []
-  pull_request: null
+  pull_request: https://github.com/electricm0nk/terminus-inference-qwen-warmup/pull/1
 priority: medium
 created: '2026-04-26T13:46:33Z'
 updated: '2026-04-26T16:00:00Z'
@@ -42,6 +42,9 @@ phase_transitions:
   user: Todd Hintzmann
 - phase: dev
   timestamp: '2026-04-26T16:00:00Z'
+  user: Todd Hintzmann
+- phase: dev-complete
+  timestamp: '2026-04-26T20:00:00Z'
   user: Todd Hintzmann
 docs:
   path: docs/terminus/inference/terminus-inference-qwen-adapter
