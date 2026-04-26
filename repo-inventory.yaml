@@ -32,6 +32,15 @@ repositories:
 - name: terminus-inference-gateway
   remote_url: https://github.com/electricm0nk/terminus-inference-gateway.git
   local_path: TargetProjects/terminus/inference/terminus-inference-gateway
+- name: terminus-inference-qwen-warmup
+  remote_url: https://github.com/electricm0nk/terminus-inference-qwen-warmup.git
+  local_path: TargetProjects/terminus/inference/terminus-inference-qwen-warmup
+  default_branch: main
+  dev_branch_mode: feature-id
+  language: python
+  domain: terminus
+  service: inference
+  discovered_at: '2026-04-26T16:30:00Z'
 - name: fourdogs-central
   remote_url: https://github.com/electricm0nk/fourdogs-central.git
   local_path: TargetProjects/fourdogs/central/fourdogs-central
