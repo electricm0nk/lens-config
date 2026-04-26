@@ -4,7 +4,7 @@ featureId: terminus-inference-qwen-adapter
 featureSlug: qwen-adapter
 domain: terminus
 service: inference
-phase: expressplan
+phase: expressplan-complete
 track: express
 milestones:
   expressplan: null
@@ -25,10 +25,13 @@ links:
   pull_request: null
 priority: medium
 created: '2026-04-26T13:46:33Z'
-updated: '2026-04-26T13:46:33Z'
+updated: '2026-04-26T14:30:00Z'
 phase_transitions:
 - phase: expressplan
   timestamp: '2026-04-26T13:46:33Z'
+  user: Todd Hintzmann
+- phase: expressplan-complete
+  timestamp: '2026-04-26T14:30:00Z'
   user: Todd Hintzmann
 docs:
   path: docs/terminus/inference/terminus-inference-qwen-adapter
