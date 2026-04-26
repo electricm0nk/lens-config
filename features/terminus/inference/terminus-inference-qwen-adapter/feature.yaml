@@ -4,7 +4,7 @@ featureId: terminus-inference-qwen-adapter
 featureSlug: qwen-adapter
 domain: terminus
 service: inference
-phase: dev
+phase: dev-complete
 track: express
 milestones:
   expressplan: null
