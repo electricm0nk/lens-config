@@ -4,10 +4,10 @@ featureId: fourdogs-etailpet-api-sales
 featureSlug: sales
 domain: fourdogs
 service: etailpet-api
-phase: businessplan
+phase: businessplan-complete
 track: quickplan
 milestones:
-  businessplan: null
+  businessplan: '2026-04-27T16:07:56Z'
   techplan: null
   finalizeplan: null
   dev-ready: null
@@ -25,10 +25,13 @@ links:
   pull_request: null
 priority: medium
 created: '2026-04-27T13:35:19Z'
-updated: '2026-04-27T13:35:19Z'
+updated: '2026-04-27T16:07:56Z'
 phase_transitions:
 - phase: businessplan
   timestamp: '2026-04-27T13:35:19Z'
+  user: Todd Hintzmann
+- phase: businessplan-complete
+  timestamp: '2026-04-27T16:07:56Z'
   user: Todd Hintzmann
 docs:
   path: docs/fourdogs/etailpet-api/sales
