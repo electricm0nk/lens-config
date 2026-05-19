@@ -18,7 +18,16 @@ team:
 dependencies:
   depends_on: []
   depended_by: []
-target_repos: []
+target_repos:
+  - repo: terminus.hermes
+    org: electricm0nk
+    url: https://github.com/electricm0nk/terminus.hermes
+    role: primary
+    path: TargetProjects/terminus/terminus.hermes
+  - repo: terminus.infra
+    org: electricm0nk
+    role: infra
+    path: TargetProjects/terminus/infra
 links:
   retrospective: null
   issues: []

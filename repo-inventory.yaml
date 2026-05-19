@@ -54,3 +54,13 @@ repositories:
 - name: fourdogs-kaylee-agent
   remote_url: https://github.com/electricm0nk/fourdogs-kaylee-agent.git
   local_path: TargetProjects/fourdogs/kaylee-agent/fourdogs-kaylee-agent
+- name: terminus.hermes
+  remote_url: https://github.com/electricm0nk/terminus.hermes.git
+  local_path: TargetProjects/terminus/terminus.hermes
+  default_branch: main
+  dev_branch_mode: feature-id
+  feature_base_branch: main
+  language: python
+  domain: terminus
+  service: watchdog
+  discovered_at: '2026-05-18T00:00:00Z'
