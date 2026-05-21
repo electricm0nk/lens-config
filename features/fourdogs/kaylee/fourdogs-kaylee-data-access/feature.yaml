@@ -4,7 +4,7 @@ featureId: fourdogs-kaylee-data-access
 featureSlug: data-access
 domain: fourdogs
 service: kaylee
-phase: expressplan
+phase: expressplan-complete
 track: express
 milestones:
   businessplan: null
