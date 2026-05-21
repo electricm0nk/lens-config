@@ -851,7 +851,7 @@ features:
   featureSlug: data-access
   domain: fourdogs
   service: kaylee
-  status: expressplan
+  status: expressplan-complete
   track: express
   owner: Todd Hintzmann
   plan_branch: fourdogs-kaylee-data-access-plan
@@ -862,3 +862,4 @@ features:
   created: '2026-05-21T11:27:48Z'
   updated_at: '2026-05-21T11:27:48Z'
   summary: ''
+  phase: expressplan-complete
