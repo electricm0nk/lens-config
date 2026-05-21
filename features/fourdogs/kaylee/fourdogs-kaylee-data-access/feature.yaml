@@ -1,0 +1,35 @@
+name: Kaylee Data Access
+description: ''
+featureId: fourdogs-kaylee-data-access
+featureSlug: data-access
+domain: fourdogs
+service: kaylee
+phase: expressplan
+track: express
+milestones:
+  businessplan: null
+  techplan: null
+  finalizeplan: null
+  dev-ready: null
+  dev-complete: null
+team:
+- username: Todd Hintzmann
+  role: lead
+dependencies:
+  depends_on: []
+  depended_by: []
+target_repos: []
+links:
+  retrospective: null
+  issues: []
+  pull_request: null
+priority: medium
+created: '2026-05-21T11:27:48Z'
+updated: '2026-05-21T11:27:48Z'
+phase_transitions:
+- phase: expressplan
+  timestamp: '2026-05-21T11:27:48Z'
+  user: Todd Hintzmann
+docs:
+  path: docs/fourdogs/kaylee/fourdogs-kaylee-data-access
+  governance_docs_path: features/fourdogs/kaylee/fourdogs-kaylee-data-access/docs

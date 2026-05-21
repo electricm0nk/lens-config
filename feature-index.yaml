@@ -845,3 +845,20 @@ features:
   updated_at: '2026-05-14T12:48:57Z'
   summary: ''
   phase: preplan-complete
+- featureId: fourdogs-kaylee-data-access
+  id: fourdogs-kaylee-data-access
+  name: Kaylee Data Access
+  featureSlug: data-access
+  domain: fourdogs
+  service: kaylee
+  status: expressplan
+  track: express
+  owner: Todd Hintzmann
+  plan_branch: fourdogs-kaylee-data-access-plan
+  related_features:
+    depends_on: []
+    blocks: []
+    related: []
+  created: '2026-05-21T11:27:48Z'
+  updated_at: '2026-05-21T11:27:48Z'
+  summary: ''
